@@ -1,5 +1,5 @@
 // Creating a base name for the MongoDB
-const mongooseBaseName = 'seller';
+const mongooseBaseName = 'sellerItem';
 
 // Create the MongoDB URI for Development and Test
 const database = {

@@ -4,8 +4,16 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 // Require Route Files
-const indexRouter = require('./routes/index');
-const articlesRouter = require('./routes/articles');
+const itemRouter = require('./routes/item');
+const sellerRouter = require('./routes/seller');
+// Instantiate Express Application Object
+const app = express();
+
+/*** Routes ***/
+
+// Mount imported Routers
+app.use(itemRouter);
+app.use(sellerRouter);
 
 // Require DB Configuration File
 const db_url = require('./db');
@@ -16,8 +24,7 @@ mongoose.connection.once('open', () => {
   console.log('Connected to Mongo');
 });
 
-// Instantiate Express Application Object
-const app = express();
+
 
 
 app.get('/', (req, res) => {
@@ -39,13 +46,8 @@ app.use(
   cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${reactPort}` })
 );
 
-/*** Routes ***/
 
-// Mount imported Routers
-app.use(indexRouter);
-app.use(articlesRouter);
-// app.use('/',indexRouter);
-// app.use('/articles',articlesRouter);
+
 
 /*** Routes ***/
 // Define PORT for the API to run on
@@ -53,7 +55,7 @@ const PORT = process.env.PORT ||3000;
 
 // Start the server to listen for requests on a given port
 app.listen(PORT, () => {
-  console.log(`BLOGY => http://localhost:${PORT}`);
+  console.log(`sellerItem => http://localhost:${PORT}`);
 });
 
 /*
