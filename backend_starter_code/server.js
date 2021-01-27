@@ -14,6 +14,7 @@ const app = express();
 // Mount imported Routers
 app.use(itemRouter);
 app.use(sellerRouter);
+app.use(express.json());
 
 // Require DB Configuration File
 const db_url = require('./db');
@@ -38,7 +39,7 @@ app.get('/', (req, res) => {
 // into JS objects before they reach the route files.
 //
 // The method `.use` sets up middleware for the Express application
-app.use(express.json());
+
 
 const reactPort = 3000;
 // Set CORS headers on response from this API using the `cors` NPM package.
@@ -51,7 +52,7 @@ app.use(
 
 /*** Routes ***/
 // Define PORT for the API to run on
-const PORT = process.env.PORT ||3000;
+const PORT = process.env.PORT ||5000;
 
 // Start the server to listen for requests on a given port
 app.listen(PORT, () => {
