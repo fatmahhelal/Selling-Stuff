@@ -5,8 +5,8 @@ import axios from 'axios';
 // INDEX, SHOW, CREATE, UPDATE, DESTROY
 
 // Get All Articles
-const getAllArticles = () => {
-  return axios.get(`${API_URL}/articles`);
+const getAllItem = () => {
+  return axios.get(`${API_URL}/allSeller`);
 };
 
 // Delete Article by ID
@@ -14,4 +14,4 @@ const deleteArticleByID = (id) => {
   return axios.delete(`${API_URL}/articles/${id}`);
 }
 
-export { getAllArticles, deleteArticleByID };
+export { getAllItem, deleteArticleByID };

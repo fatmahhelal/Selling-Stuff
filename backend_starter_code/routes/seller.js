@@ -34,7 +34,7 @@ router.get('/allSeller', (req, res) => {
  * Action:      INDEX
  * Method:      Get
  * URI:         /oneSeller
- * Description: find seller
+ * Description: find specific seller
  */
 
 router.get('/oneSeller', (req, res) => {
@@ -81,10 +81,10 @@ router.post('/addUser', (req, res) => {
  * Description: add new item by seller
  */
 
-router.post('/AddItem', (req, res) => {
+router.post('/AddItem/:userName', (req, res) => {
   console.log('You Item List');
   const newItem = new Item (req.body)
-  Seller.find({userName:req.query.userName}, (err, foundSeller) => {
+  Seller.find({userName:req.params.userName}, (err, foundSeller) => {
     console.log('FOUND USER: ', foundSeller);
     foundSeller[0].item.push(newItem);
 
@@ -100,18 +100,21 @@ router.post('/AddItem', (req, res) => {
 
 
 
+
 /**
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
- * Description: delete all item by seller 
+ * Description: delet spicific item  
  */
-router.delete('/deleteAllItem', (req, res) => {
+
+router.delete('/item/:userName/:id', (req, res) => {
   console.log('delete /item');
-  Seller.find({ userName: req.query.userName }, (err, foundUser) => {
+  console.log("Id", req.params.id);
+  Seller.find({ userName: req.params.userName }, (err, foundUser) => {
     console.log('FOUND USER: ', foundUser);
     console.log('FOUND Item: ', foundUser[0].item);
-    foundUser[0].item=[];
+    foundUser[0].item.id(req.params.id).remove();
     foundUser[0].save((err, result) => {
       if (err) {
         console.log('ERR: ', err);
@@ -124,19 +127,27 @@ router.delete('/deleteAllItem', (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * Action:      INDEX
+ * Method:      delete
+ * URI:         /item
+ * Description: delete all item by user 
+ */
+router.delete('/allItem/:userName', (req, res) => {
+  console.log('delete /item');
+  Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
+    console.log('FOUND USER: ', foundUser);
+    console.log('FOUND Item: ', foundUser[0].item);
+    foundUser[0].item=[];
+    foundUser[0].save((err, result) => {
+      if (err) {
+        console.log('ERR: ', err);
+      } else {
+        res.json(result);
+      }
+    });
+  });
+})
 
 
 
