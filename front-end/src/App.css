@@ -1,3 +1,9 @@
+.App {
+  text-align: center;
+  font-family: 'Fira Mono', sans-serif !important;
+  overflow: hidden;
+}
+
 .card {
   width: 320px;
   height: 590px; 
@@ -12,8 +18,11 @@
 }
 .boot{
   margin-bottom: 30px;
-  left: 2.5%;
+  left: 1.2%;
   position: relative;
-  top: 10px;
+  top: 8px;
   bottom: 1%;
+}
+.topHeader {
+  margin-top: 100px;
 }
