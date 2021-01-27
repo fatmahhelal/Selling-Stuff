@@ -1,15 +1,19 @@
-.app {
-  border: 6px solid green;
+.card {
+  width: 320px;
+  height: 590px; 
+  padding: 5px;
+  margin: 20px;
+  float: left;
+  box-shadow: 3px 3px 3px 3px rgb(206, 204, 204);
+  position: relative;
+  bottom: 30px;
+  text-align: center;
+  display: inline;
 }
-
-.new-item {
-  border: 4px solid red;
-}
-
-.todo-list {
-  border: 4px solid blue;
-}
-
-.todo-item {
-  border: 3px solid black;
+.boot{
+  margin-bottom: 30px;
+  left: 2.5%;
+  position: relative;
+  top: 10px;
+  bottom: 1%;
 }
