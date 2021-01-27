@@ -10,6 +10,7 @@ export default class Home extends Component {
                 key={key}
                 SellerName={seller}
                 SellerItem= {seller.item}
+                getFav={this.props.getFav} 
                 />
                 // console.log('test',item)
                 // console.log('key',key.userName)
@@ -18,7 +19,7 @@ export default class Home extends Component {
           
         })
         return (
-            <div>
+            <div className="topHeader boot">
               {ItemCard}
             </div>
         )

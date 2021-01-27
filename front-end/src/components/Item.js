@@ -11,6 +11,8 @@ export default class Item extends Component {
                 key={key}
                 item= {item}
                 SellerInfo= {this.props.SellerName}
+                getFav={this.props.getFav} 
+                removeFav={this.props.removeFav}
                 />
                 // console.log('test',item)
                 // console.log('key',key.userName)
