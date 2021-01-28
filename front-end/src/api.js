@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // Get All Articles
 const getAllItem = () => {
-  return axios.get(`${API_URL}/allSeller`);
+  return axios.get(`${API_URL}/allItem`);
 };
 
 // Delete Article by ID

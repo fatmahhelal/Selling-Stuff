@@ -1,7 +1,10 @@
+
+
+
 // Require necessary NPM packages
 const express = require('express');
 
-const {Seller,Item} = require('../models/seller')
+const { Seller, Item } = require('../models/seller')
 
 
 
@@ -30,6 +33,36 @@ router.get('/allSeller', (req, res) => {
   });
 });
 
+
+
+router.get('/allItem', (req, res) => {
+  console.log('POST /users');
+  Item.find({}, (err, newUser) => {
+    if (err) {
+      console.log('ERR: ', err);
+    } else {
+      console.log(newUser)
+      res.json(newUser);
+    }
+  });
+});
+
+router.get('/OneItem', (req, res) => {
+  console.log('You Item List');
+  Item.findById(req.query.id, (err, foundUser) => {
+    console.log('FOUND USER: ', foundUser);
+    if (err) {
+      console.log('ERR: ', err);
+    } else {
+      res.json(foundUser);
+    }
+  });
+});
+
+
+
+
+
 /**
  * Action:      INDEX
  * Method:      Get
@@ -39,7 +72,19 @@ router.get('/allSeller', (req, res) => {
 
 router.get('/oneSeller', (req, res) => {
   console.log('You Item List');
-  Seller.find({userName:req.query.userName}, (err, foundUser) => {
+  Seller.find({ userName: req.query.userName }, (err, foundUser) => {
+    console.log('FOUND USER: ', foundUser);
+    if (err) {
+      console.log('ERR: ', err);
+    } else {
+      res.json(foundUser);
+    }
+  });
+});
+
+router.get('/oneSellerId', (req, res) => {
+  console.log('You Item List');
+  Seller.findById(req.query.id, (err, foundUser) => {
     console.log('FOUND USER: ', foundUser);
     if (err) {
       console.log('ERR: ', err);
@@ -81,21 +126,23 @@ router.post('/addUser', (req, res) => {
  * Description: add new item by seller
  */
 
-router.post('/AddItem', (req, res) => {
-  console.log('You Item List');
-  const newItem = new Item (req.body)
-  Seller.find({userName:req.query.userName}, (err, foundSeller) => {
-    console.log('FOUND USER: ', foundSeller);
-    foundSeller[0].item.push(newItem);
-
-    foundSeller[0].save((err, result) => {
-      if (err) {
-        console.log('ERR: ', err);
-      } else {
-        res.json(result);
-      }
-    })
-  });
+router.post('/AddItem', async (req, res) => {
+  try {
+    let seller = await Seller.findOne({ userName: req.query.userName })
+    console.log({ userName: req.query.userName })
+    if(seller){
+      const newItem = new Item(req.body)
+       newItem.sellerId = seller._id
+      console.log(newItem)
+      await newItem.save()
+      seller.item.push(newItem._id);
+      await seller.save()
+      res.json(newItem)
+    }
+  } catch (err) {
+    res.json(err)
+  }
+  
 });
 
 
@@ -105,23 +152,49 @@ router.post('/AddItem', (req, res) => {
  * URI:         /item
  * Description: delete specific item by user 
  */
-router.delete('/item/:userName/:id', (req, res) => {
-  console.log('delete /item');
-  console.log("Id", req.params.id);
-  Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
-    console.log('FOUND USER: ', foundUser);
-    console.log('FOUND Item: ', foundUser[0].item);
-    foundUser[0].item.id(req.params.id).remove();
-    foundUser[0].save((err, result) => {
-      if (err) {
-        console.log('ERR: ', err);
-      } else {
-        res.json(result);
-      }
-    });
-  });
+router.delete('/itemDelet', (req, res) => {
+  // console.log('delete /item');
+  // console.log("Id", req.params.id);
+  // Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
+  //   console.log('FOUND USER: ', foundUser);
+  //   console.log('FOUND Item: ', foundUser[0].item);
+  //   foundUser[0].item.id(req.params.id).remove();
+  //   foundUser[0].save((err, result) => {
+  //     if (err) {
+  //       console.log('ERR: ', err);
+  //     } else {
+  //       res.json(result);
+  //     }
+  //   });
+  // });
+  let seller =  Seller.findOne({ userName: req.query.userName })
+  console.log({ userName: req.query.userName })
+
+   const ItemId=  Item.findById(req.query.id)
+   console.log(ItemId)
+  //  ItemId.remove()
+  //  Item.save()
+ 
+ 
 })
 
+router.post('/AddItem', async (req, res) => {
+  try {
+    let seller = await Seller.findOne({ userName: req.query.userName })
+    console.log({ userName: req.query.userName })
+    if(seller){
+      const newItem = new Item(req.body)
+      console.log(newItem)
+      await newItem.save()
+      seller.item.push(newItem._id);
+      await seller.save()
+      res.json(newItem)
+    }
+  } catch (err) {
+    res.json(err)
+  }
+  
+});
 
 /**
  * Action:      INDEX
@@ -134,7 +207,7 @@ router.delete('/deleteAllItem', (req, res) => {
   Seller.find({ userName: req.query.userName }, (err, foundUser) => {
     console.log('FOUND USER: ', foundUser);
     console.log('FOUND Item: ', foundUser[0].item);
-    foundUser[0].item=[];
+    foundUser[0].item = [];
     foundUser[0].save((err, result) => {
       if (err) {
         console.log('ERR: ', err);
@@ -169,3 +242,4 @@ module.exports = router;
 
 
 //
+

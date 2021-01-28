@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      Seller: [],
+      Item: [],
       FavArray: [],
       ItemArray:[]
     }
@@ -87,19 +87,21 @@ class App extends React.Component {
   // this is the way that we learn till now
   getAllItem = () => {
     axios
-      .get(`http://localhost:5000/allSeller`)
+      .get(`http://localhost:5000/allItem`)
       .then((response) => {
 
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
 
 
-        this.setState({ Seller: response.data });
+        this.setState({ Item: response.data });
       })
       .catch((err) => {
         console.log("ERR: ", err);
       });
   };
+
+  
 
  
 
@@ -152,7 +154,7 @@ class App extends React.Component {
   exact
   path="/"
   component={(props) => {
-    return <Home SellerState={this.state.Seller}
+    return <Home ItemState={this.state.Item}
     AddItemToArray={this.AddItemToArray} 
     getFav={this.getFav}/>;
   }}
