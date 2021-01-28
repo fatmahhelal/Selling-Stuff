@@ -1,38 +1,88 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+import axios from "axios";
 export default class NewSeller extends Component {
-    render() {
-        return (
-          
-                <div className="signup-form">
-    <form  method="post">
-		<h2>Register</h2>
-		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
-        <div class="form-group">
-			<div class="row">
-				<div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
-				<div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
-			</div>        	
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userName: "",
+      name: "",
+      cotactInfo: "",
+    };
+  }
+  ChangHandler=(e)=>{
+    this.setState({[e.target.name]:e.target.value})
+  }
+
+  SubmitHandler=(e)=>{
+    e.preventDefault()
+    console.log(this.state)
+    axios.post('http://localhost:5000/addUser',this.state)
+    .then(respons=>{
+      console.log(respons.data)
+    })
+    .catch(error=>{
+      console.log(error)
+    })
+  }
+
+
+  render() {
+    const {userName,name,cotactInfo}= this.state
+    return (
+      <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+          <div class="card card-3">
+            <div class="card-heading"></div>
+            <div class="card-body">
+              <h2 class="title">Registration Info</h2>
+              <form onSubmit={this.SubmitHandler} >
+                <div class="input-group">
+                  User Name:{" "}
+                  <input
+                    class="input--style-3"
+                    type="text"
+                    placeholder="Name"
+                    name="userName"
+                    value ={userName}
+                    onChange={this.ChangHandler}
+                  />
+                </div>
+                <div class="input-group">
+                  name:{" "}
+                  <input
+                    class="input--style-3 js-datepicker"
+                    type="text"
+                    placeholder="enter your name"
+                    name="name"
+                    value = {name}
+                    onChange={this.ChangHandler}
+                  />
+                  <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                </div>
+
+                <div class="input-group">
+                  Email:{" "}
+                  <input
+                    class="input--style-3"
+                    type="email"
+                    placeholder="enter your Email"
+                    name="cotactInfo"
+                    value={cotactInfo}
+                    onChange={this.ChangHandler}
+                  />
+                </div>
+
+                <div class="p-t-10">
+                  <button class="btn btn--pill btn--green" type="submit">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Email" required="required"/>
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required"/>
-        </div>
-		<div class="form-group">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required"/>
-        </div>        
-        <div class="form-group">
-			<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-		</div>
-		<div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
-        </div>
-    </form>
-	<div class="text-center">Already have an account? <a href="#">Sign in</a></div>
-</div>
-            
-        )
-    }
+      </div>
+    );
+  }
 }

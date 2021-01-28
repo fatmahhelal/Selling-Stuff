@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ItemInfo from './components/ItemInfo'
+
 import "./App.css";
 import Home from "./components/Home";
 import Favorite from "./components/Favorite";
@@ -101,7 +101,7 @@ class App extends React.Component {
       });
   };
 
-  
+
 
  
 
@@ -175,7 +175,7 @@ class App extends React.Component {
 
 
 <Route exact path="/Personal" component={Personal} />
-<Route path='/ItemInfo/:id' component={ItemInfo}/>
+{/* <Route path='/ItemInfo/:id' component={ItemInfo}/> */}
 
 
 

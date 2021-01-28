@@ -16,8 +16,7 @@ export default class ItemInfo extends Component {
         return (
           <div className="topHeader boot
           ">
-            <h1>test</h1>
-            <button>teestt</button>
+            
              </div>
 
         )

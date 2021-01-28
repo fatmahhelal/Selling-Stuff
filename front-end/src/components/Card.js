@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ItemInfo from './ItemInfo'
 import Fav from './Fav'
 import axios from "axios";
+import ItemInfo from './ItemInfo'
 
 export default class Card extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class Card extends Component {
     render() {
       
         return (
-          
+          <Router>
             
                 <div id="topHeader" className="boot">
         <div class="card">
@@ -56,13 +56,10 @@ export default class Card extends Component {
                 <a href=''>
                 <button type="button" class="btn btn-outline-success btnMore"> Contact
                   </button></a>
-                  <Route path='/ItemInfo/:id' component={(props)=>{
-          <ItemInfo itemTitle={this.props.item.itemTitle} 
-          description={this.props.item.description}
-          price={this.props.item.price}
-          name={this.props.SellerInfo.name}/>
+                  <Route exact path='/ItemInfo/:id' component={ItemInfo}/>
+   
          
-        }}></Route>
+      
               </div>
             </div>
           </div>
@@ -70,6 +67,7 @@ export default class Card extends Component {
        
       
       </div>
+      </Router>
 
            
         )

@@ -1,6 +1,6 @@
-import API_URL from './apiConfig';
+import API_URL from "./apiConfig";
 // const API_URL=require('./apiConfig')
-import axios from 'axios';
+import axios from "axios";
 
 // INDEX, SHOW, CREATE, UPDATE, DESTROY
 
@@ -12,6 +12,6 @@ const getAllItem = () => {
 // Delete Article by ID
 const deleteArticleByID = (id) => {
   return axios.delete(`${API_URL}/articles/${id}`);
-}
+};
 
 export { getAllItem, deleteArticleByID };
