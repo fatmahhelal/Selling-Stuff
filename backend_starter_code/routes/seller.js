@@ -34,7 +34,7 @@ router.get('/allSeller', (req, res) => {
  * Action:      INDEX
  * Method:      Get
  * URI:         /oneSeller
- * Description: find specific seller
+ * Description: find seller
  */
 
 router.get('/oneSeller', (req, res) => {
@@ -81,10 +81,10 @@ router.post('/addUser', (req, res) => {
  * Description: add new item by seller
  */
 
-router.post('/AddItem/:userName', (req, res) => {
+router.post('/AddItem', (req, res) => {
   console.log('You Item List');
   const newItem = new Item (req.body)
-  Seller.find({userName:req.params.userName}, (err, foundSeller) => {
+  Seller.find({userName:req.query.userName}, (err, foundSeller) => {
     console.log('FOUND USER: ', foundSeller);
     foundSeller[0].item.push(newItem);
 
@@ -99,19 +99,16 @@ router.post('/AddItem/:userName', (req, res) => {
 });
 
 
-
-
 /**
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
- * Description: delet spicific item  
+ * Description: delete specific item by user 
  */
-
 router.delete('/item/:userName/:id', (req, res) => {
   console.log('delete /item');
   console.log("Id", req.params.id);
-  Seller.find({ userName: req.params.userName }, (err, foundUser) => {
+  Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
     console.log('FOUND USER: ', foundUser);
     console.log('FOUND Item: ', foundUser[0].item);
     foundUser[0].item.id(req.params.id).remove();
@@ -126,16 +123,15 @@ router.delete('/item/:userName/:id', (req, res) => {
 })
 
 
-
 /**
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
- * Description: delete all item by user 
+ * Description: delete all item by seller 
  */
-router.delete('/allItem/:userName', (req, res) => {
+router.delete('/deleteAllItem', (req, res) => {
   console.log('delete /item');
-  Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
+  Seller.find({ userName: req.query.userName }, (err, foundUser) => {
     console.log('FOUND USER: ', foundUser);
     console.log('FOUND Item: ', foundUser[0].item);
     foundUser[0].item=[];
@@ -148,6 +144,22 @@ router.delete('/allItem/:userName', (req, res) => {
     });
   });
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

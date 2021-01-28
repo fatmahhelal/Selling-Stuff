@@ -14,11 +14,10 @@ export default class ItemInfo extends Component {
     
     render() {
         return (
-          <div>
-
-
-
-
+          <div className="topHeader boot
+          ">
+            <h1>test</h1>
+            <button>teestt</button>
              </div>
 
         )

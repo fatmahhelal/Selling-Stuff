@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 // Require Route Files
-const itemRouter = require('./routes/item');
 const sellerRouter = require('./routes/seller');
 // Instantiate Express Application Object
 const app = express();
@@ -12,7 +11,6 @@ const app = express();
 /*** Routes ***/
 
 // Mount imported Routers
-app.use(itemRouter);
 app.use(sellerRouter);
 app.use(express.json());
 
@@ -38,10 +36,10 @@ app.get('/', (req, res) => {
 // Add `bodyParser` middleware which will parse JSON requests
 // into JS objects before they reach the route files.
 //
-// The method `.use` sets up middleware for the Express application
 
 
-const reactPort = 3000;
+
+const reactPort = 5000;
 // Set CORS headers on response from this API using the `cors` NPM package.
 app.use(
   cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${reactPort}` })
