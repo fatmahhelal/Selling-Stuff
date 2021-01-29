@@ -1,33 +1,4 @@
-/* .App {
-  text-align: center;
-  font-family: 'Fira Mono', sans-serif !important;
-  overflow: hidden;
-}
 
-.card {
-  width: 320px;
-  height: 590px; 
-  padding: 5px;
-  margin: 20px;
-  float: left;
-  box-shadow: 3px 3px 3px 3px rgb(206, 204, 204);
-  position: relative;
-  bottom: 30px;
-  text-align: center;
-  display: inline;
-}
-.boot{
-  margin-bottom: 30px;
-  left: 1.2%;
-  position: relative;
-  top: 8px;
-  bottom: 1%;
-}
-
-.center{
-text-align: center;
-
-} */
 
 
 .App {
@@ -57,5 +28,17 @@ text-align: center;
 }
 .topHeader {
   margin-top: 100px;
+}
+
+.personal{
+  text-align: center;
+}
+
+.jumbotron{
+  margin-top: 20%;
+}
+.pesBut{
+  width: 50%;
+  margin-left: 25%;
 }
 
