@@ -7,6 +7,9 @@ import Personal from "./components/Personal";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NewItem from "./components/NewItem";
 
+import Search from "./components/Search"
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,11 +17,36 @@ class App extends React.Component {
       Item: [],
       FavArray: [],
       ItemArray: [],
+
+      searchResultArray: [],
+      searchWord: "",
+
+
     };
   }
 
   componentDidMount = () => {
     this.getAllItem();
+  };
+
+
+  searchResult = () => {
+    var search = this.state.searchWord
+    var query = `http://localhost:5000/oneItemByName?itemTitle=${search}`
+    axios
+      .get(query)
+      .then((response) => {
+        if (!response) {
+          console.log('no data ');
+        }
+        else {
+          console.log('here search re: ', response.data);
+          this.setState({ searchResultArray: response.data })
+        }
+      })
+      .catch((err) => {
+        console.log('ERR: ', err);
+      });
   };
 
   AddItemToArray = (item) => {
@@ -67,7 +95,11 @@ class App extends React.Component {
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
+
+    localStorage.setItem("searchResultArray", JSON.stringify(this.state.searchResultArray));
+
     localStorage.setItem("ItemArray", JSON.stringify(this.state.ItemArray));
+
   }
 
   // connect react with API that you build
@@ -89,11 +121,18 @@ class App extends React.Component {
 
   render() {
     return (
+
+      <div className="App">
+
       <Router>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
           <div class="container-fluid">
             <a class="navbar-brand" href="#">
+
+              Selling
+
               Navbar
+
             </a>
             <button
               class="navbar-toggler"
@@ -132,6 +171,19 @@ class App extends React.Component {
                 </li>
               </ul>
 
+              <form class="d-flex" action='./Search'>
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                  onChange={(e) => {
+                    this.setState({ searchWord: e.target.value });
+                  }}
+                  value={this.state.searchWord}
+                ></input>
+                <Link to="/Search">
+                  <button class="fa fa-search" class="btn btn-outline-success" type="button"
+                    onClick={this.searchResult}>Search</button>
+                </Link>
+
+
               <form class="d-flex">
                 <input
                   class="form-control me-2"
@@ -142,6 +194,7 @@ class App extends React.Component {
                 <button class="btn btn-outline-success" type="submit">
                   Search
                 </button>
+
               </form>
             </div>
           </div>
@@ -178,8 +231,25 @@ class App extends React.Component {
 
         <Route exact path="/Personal" component={Personal} />
         {/* <Route path='/ItemInfo/:id' component={ItemInfo}/> */}
+
+
+        <Route
+          path='/Search'
+          render={(props) => {
+            return (
+              <Search
+                searchResultArray={this.state.searchResultArray}
+                getFav={this.getFav}
+              />
+            );
+          }}
+        />
+      </Router>
+      </div>
+
         
       </Router>
+
     );
   }
 }

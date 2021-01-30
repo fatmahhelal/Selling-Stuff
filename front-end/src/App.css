@@ -1,6 +1,4 @@
 
-
-
 .App {
   text-align: center;
   font-family: 'Fira Mono', sans-serif !important;
@@ -30,6 +28,7 @@
   margin-top: 100px;
 }
 
+
 .personal{
   text-align: center;
 }
@@ -41,4 +40,5 @@
   width: 50%;
   margin-left: 25%;
 }
+
 

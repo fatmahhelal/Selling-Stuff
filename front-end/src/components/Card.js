@@ -9,6 +9,41 @@ export default class Card extends Component {
     super(props)
   
     this.state = {
+
+      Item:[], 
+      sellerName:"", 
+      sellerContact:"", 
+    }
+  }
+  
+  
+  componentDidMount() {
+    this.getSeller()
+  }
+  getSeller = () => {
+    const sellerId = this.props.item.sellerId
+    axios
+      .get(`http://localhost:5000/oneSellerId?id=${sellerId}`)
+      .then((response) => {
+        this.setState({ 
+          sellerName: response.data.name, 
+          sellerContact: response.data.cotactInfo
+
+         })
+        console.log(response.data)
+      })
+      .catch((err) => {
+        console.log('ERR: ', err);
+      });
+  }
+  
+  getItemInfor = () => {
+    axios
+      .get(`http://localhost:5000/OneItem?id=${this.props.item._id}`)
+      .then((response) => {
+        console.log("RESPONSE: ", response);
+        console.log("DATA: ", response.data);
+
       Item:[]
     }
   }
@@ -20,6 +55,7 @@ export default class Card extends Component {
 
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
+
 
 
         this.setState({ Item: response.data });
@@ -44,17 +80,29 @@ export default class Card extends Component {
             <h3 class="card-text">{this.props.item.itemTitle}</h3>
             <p class="card-text">{this.props.item.description}</p>
             <p class="card-text ratingCon">{this.props.item.price} .SR </p>
+
+            <p class="card-text">{this.state.sellerName}</p>
+
             {/* <p class="card-text">{this.props.SellerInfo.name}</p> */}
+
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">
               
                 <Link to={`/ItemInfo/:${this.props.item._id}`} >
+
+                  <button type="button" class="btn btn-outline-success btnMore" onClick={this.getItemInfor} >More
+
                   <button type="button" class="btn btn-outline-success btnMore" onClick={this.getAllItem} >More
+
                   </button>
                   
                 </Link>
                 <a href=''>
+
+                <button type="button" class="btn btn-outline-success btnMore" onClick={this.state.sellerContact}> Contact
+
                 <button type="button" class="btn btn-outline-success btnMore"> Contact
+
                   </button></a>
                   <Route exact path='/ItemInfo/:id' component={ItemInfo}/>
    

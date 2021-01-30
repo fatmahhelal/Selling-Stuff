@@ -53,12 +53,21 @@ router.get("/allItem", (req, res) => {
 //  */
 router.get("/OneItem", (req, res) => {
   console.log("You Item List");
+
+  Item.findById(req.query.id, (err, foundItem) => {
+    console.log("FOUND USER: ", foundItem);
+    if (err) {
+      console.log("ERR: ", err);
+    } else {
+      res.json(foundItem);
+
   Item.findById(req.query.id, (err, foundUser) => {
     console.log("FOUND USER: ", foundUser);
     if (err) {
       console.log("ERR: ", err);
     } else {
       res.json(foundUser);
+
     }
   });
 });
@@ -165,6 +174,27 @@ router.post("/AddItem", async (req, res) => {
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
+
+ * Description: delete specific item by user 
+ */
+router.delete('/item/:userName/:id', (req, res) => {
+  console.log('delete /item');
+  console.log("Id", req.params.id);
+  Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
+    console.log('FOUND USER: ', foundUser);
+    console.log('FOUND Item: ', foundUser[0].item);
+    foundUser[0].item.id(req.params.id).remove();
+    foundUser[0].save((err, result) => {
+      if (err) {
+        console.log('ERR: ', err);
+      } else {
+        res.json(result);
+      }
+    });
+  });
+})
+
+
  * Description: delete specific item by user
  */
 router.delete("/itemDelet", (req, res) => {
@@ -208,10 +238,21 @@ router.post("/AddItem", async (req, res) => {
   }
 });
 
+
 /**
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
+
+ * Description: delete all item by seller 
+ */
+router.delete('/deleteAllItem', (req, res) => {
+  console.log('delete /item');
+  Seller.find({ userName: req.query.userName }, (err, foundUser) => {
+    console.log('FOUND USER: ', foundUser);
+    console.log('FOUND Item: ', foundUser[0].item);
+    foundUser[0].item=[];
+
  * Description: delete all item by seller
  */
 router.delete("/deleteAllItem", (req, res) => {
@@ -220,6 +261,7 @@ router.delete("/deleteAllItem", (req, res) => {
     console.log("FOUND USER: ", foundUser);
     console.log("FOUND Item: ", foundUser[0].item);
     foundUser[0].item = [];
+
     foundUser[0].save((err, result) => {
       if (err) {
         console.log("ERR: ", err);
@@ -229,6 +271,10 @@ router.delete("/deleteAllItem", (req, res) => {
     });
   });
 });
+
+
+
+
 
 // Export the Router so we can use it in the server.js file
 module.exports = router;
