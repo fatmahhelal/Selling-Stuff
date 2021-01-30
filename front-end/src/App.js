@@ -7,6 +7,8 @@ import Personal from "./components/Personal";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NewItem from "./components/NewItem";
 
+import Search from "./components/Search";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,11 +16,32 @@ class App extends React.Component {
       Item: [],
       FavArray: [],
       ItemArray: [],
+
+      searchResultArray: [],
+      searchWord: "",
     };
   }
 
   componentDidMount = () => {
     this.getAllItem();
+  };
+
+  searchResult = () => {
+    var search = this.state.searchWord;
+    var query = `http://localhost:5000/oneItemByName?itemTitle=${search}`;
+    axios
+      .get(query)
+      .then((response) => {
+        if (!response) {
+          console.log("no data ");
+        } else {
+          console.log("here search re: ", response.data);
+          this.setState({ searchResultArray: response.data });
+        }
+      })
+      .catch((err) => {
+        console.log("ERR: ", err);
+      });
   };
 
   AddItemToArray = (item) => {
@@ -67,6 +90,12 @@ class App extends React.Component {
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
+
+    localStorage.setItem(
+      "searchResultArray",
+      JSON.stringify(this.state.searchResultArray)
+    );
+
     localStorage.setItem("ItemArray", JSON.stringify(this.state.ItemArray));
   }
 
@@ -89,97 +118,120 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-              Navbar
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarsExampleDefault"
-              aria-controls="navbarsExampleDefault"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
+      <div className="App">
+        <Router>
+          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">
+                Selling Navbar
+              </a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-              <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item active">
-                  <Link to="/" class="nav-link" aria-current="page">
-                    Home
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link to="/Personal" class="nav-link">
-                    Personal
-                  </Link>
-                </li>
-                <li class="nav-item">
-                  <Link
-                    to="/Favorite"
-                    class="nav-link"
-                    href="#"
-                    tabindex="-1"
-                    aria-disabled="true"
-                  >
-                    Favorite
-                  </Link>
-                </li>
-              </ul>
+              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                  <li class="nav-item active">
+                    <Link to="/" class="nav-link" aria-current="page">
+                      Home
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link to="/Personal" class="nav-link">
+                      Personal
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link
+                      to="/Favorite"
+                      class="nav-link"
+                      href="#"
+                      tabindex="-1"
+                      aria-disabled="true"
+                    >
+                      Favorite
+                    </Link>
+                  </li>
+                </ul>
 
-              <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
+                <form class="d-flex" action="./Search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    onChange={(e) => {
+                      this.setState({ searchWord: e.target.value });
+                    }}
+                    value={this.state.searchWord}
+                  ></input>
+                  <Link to="/Search">
+                    <button
+                      class="fa fa-search"
+                      class="btn btn-outline-success"
+                      type="button"
+                      onClick={this.searchResult}
+                    >
+                      Search
+                    </button>
+                  </Link>
+                </form>
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
 
-        <Route
-          exact
-          path="/"
-          component={(props) => {
-            return (
-              <Home
-                ItemState={this.state.Item}
-                AddItemToArray={this.AddItemToArray}
-                getFav={this.getFav}
-              />
-            );
-          }}
-        />
+          <Route
+            exact
+            path="/"
+            component={(props) => {
+              return (
+                <Home
+                  ItemState={this.state.Item}
+                  AddItemToArray={this.AddItemToArray}
+                  getFav={this.getFav}
+                />
+              );
+            }}
+          />
 
-        <Route
-          exact
-          path="/Favorite"
-          component={(props) => {
-            return (
-              <Favorite
-                FavArray={this.state.FavArray}
-                getFav={this.getFav}
-                removeFav={this.removeFav}
-                deleteFav={this.deleteFav}
-              />
-            );
-          }}
-        />
+          <Route
+            exact
+            path="/Favorite"
+            component={(props) => {
+              return (
+                <Favorite
+                  FavArray={this.state.FavArray}
+                  getFav={this.getFav}
+                  removeFav={this.removeFav}
+                  deleteFav={this.deleteFav}
+                />
+              );
+            }}
+          />
 
-        <Route exact path="/Personal" component={Personal} />
-        {/* <Route path='/ItemInfo/:id' component={ItemInfo}/> */}
-        
-      </Router>
+          <Route exact path="/Personal" component={Personal} />
+
+          <Route
+            path="/Search"
+            render={(props) => {
+              return (
+                <Search
+                  searchResultArray={this.state.searchResultArray}
+                  getFav={this.getFav}
+                />
+              );
+            }}
+          />
+        </Router>
+      </div>
     );
   }
 }
