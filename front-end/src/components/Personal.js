@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import NewSeller from "./NewSeller";
 import OldUser from './OldUser'
 
+
+
 export default class Personal extends Component {
   render() {
     return (

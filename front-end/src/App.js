@@ -4,6 +4,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Favorite from "./components/Favorite";
 import Personal from "./components/Personal";
+//import SellerInfo from './SellerInfo';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import NewItem from "./components/NewItem";
 

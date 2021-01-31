@@ -45,6 +45,18 @@ router.get("/allItem", (req, res) => {
   });
 });
 
+
+router.get("/SellerItem", (req, res) => {
+  console.log("POST /users");
+  Item.find({sellerId: req.query.Id}, (err, newUser) => {
+    if (err) {
+      console.log("ERR: ", err);
+    } else {
+      console.log(newUser);
+      res.json(newUser);
+    }
+  });
+});
 // /**
 //  * Action:      INDEX
 //  * Method:      GET
@@ -268,6 +280,26 @@ router.put('/updateItem', async (req, res) => {
   }
 });
 
+
+router.put('/updateItem', async (req, res) => {
+  try {
+    let seller = await Seller.findOne({ userName: req.query.userName })
+    console.log("user Item: ", seller.item)
+    Item.findByIdAndUpdate( req.query.id , req.body,
+      (err, updateItem) => {
+        if (err) {
+          console.log('ERR: ', err);
+          res.json(err)
+        }
+        else {
+          console.log("Updated User : ", updateItem);
+          res.json(updateItem)
+        }
+      });
+  } catch (err) {
+    res.json(err)
+  }
+});
 
 
 
