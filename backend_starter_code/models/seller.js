@@ -18,8 +18,7 @@ const sellerSchema = new mongoose.Schema({
   userName: { type: String, require: true, unique: true },
   name: { type: String, require: true },
   cotactInfo: { type: String, require: true },
-  item: [{ type: mongoose.Schema.Types.ObjectId, ref: "Item" }],
-  
+  // [itemSchema]
 });
 
 const Seller = mongoose.model("Seller", sellerSchema);
