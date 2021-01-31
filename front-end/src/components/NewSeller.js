@@ -16,7 +16,7 @@ export default class NewSeller extends Component {
 
   SubmitHandler=(e)=>{
     e.preventDefault()
-    console.log(this.state)
+    console.log('bring state',this.state)
     axios.post('http://localhost:5000/addUser',this.state)
     .then(respons=>{
       console.log(respons.data)
@@ -37,19 +37,19 @@ export default class NewSeller extends Component {
             <div class="card-body">
               <h2 class="title">Registration Info</h2>
               <form onSubmit={this.SubmitHandler} >
-                <div class="input-group">
-                  User Name:{" "}
+                <div class="input-group newSeller">
+                <label>username</label>
                   <input
                     class="input--style-3"
                     type="text"
-                    placeholder="Name"
+                    placeholder="userName"
                     name="userName"
                     value ={userName}
                     onChange={this.ChangHandler}
                   />
                 </div>
-                <div class="input-group">
-                  name:{" "}
+                <div class="input-group newSeller">
+                <label className='newSellerLable'>name</label>
                   <input
                     class="input--style-3 js-datepicker"
                     type="text"
@@ -61,7 +61,7 @@ export default class NewSeller extends Component {
                   <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                 </div>
 
-                <div class="input-group">
+                <div class="input-group newSeller">
                   Email:{" "}
                   <input
                     class="input--style-3"

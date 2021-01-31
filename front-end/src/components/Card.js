@@ -82,29 +82,19 @@ export default class Card extends Component {
               <h3 class="card-text">{this.props.item.itemTitle}</h3>
               <p class="card-text">{this.props.item.description}</p>
               <p class="card-text priceCon">{this.props.item.price} .SR </p>
-
               <p class="card-text">Selling By: {this.state.sellerName}</p>
-
-              {/* <p class="card-text">{this.props.SellerInfo.name}</p> */}
-
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
-
                   <Link to={`/ItemInfo/:${this.props.item._id}`} >
                     <button type="button" class="btn btn-outline-success buttonCard" onClick={this.getAllItem} >More</button>
                   </Link>
                   <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button>
 
                   <Route exact path='/ItemInfo/:id' component={ItemInfo} />
-
-
-
                 </div>
               </div>
             </div>
           </div>
-
-
         </div>
       </Router>
 

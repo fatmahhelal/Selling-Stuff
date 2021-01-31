@@ -5,9 +5,8 @@ import Home from "./components/Home";
 import Favorite from "./components/Favorite";
 import Personal from "./components/Personal";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import NewItem from "./components/NewItem";
-
 import Search from "./components/Search";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -75,7 +74,7 @@ class App extends React.Component {
 
   // function used for remove all Item by user from Favorite List
   deleteFav = () => {
-    console.log(this.state.FavArray);
+    console.log('favorite array:',this.state.FavArray);
     this.setState({ FavArray: [] });
   };
 
@@ -146,6 +145,7 @@ class App extends React.Component {
                       Favorite
                     </Link>
                   </li>
+                  
                 </ul>
 
                 <form class="d-flex" action="./Search">
@@ -203,6 +203,8 @@ class App extends React.Component {
           />
 
           <Route exact path="/Personal" component={Personal} />
+        
+         
 
           <Route
             path="/Search"
