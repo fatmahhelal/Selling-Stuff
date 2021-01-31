@@ -79,3 +79,14 @@
 }
 
 
+.newSellerPage{
+  display: grid;
+  justify-content: center;
+
+}
+/* .c{
+  margin-top: 100px;
+}
+.b{
+  margin-top: 100px;
+} */

@@ -8,7 +8,6 @@ import Personal from "./components/Personal";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -75,14 +74,17 @@ class App extends React.Component {
 
   // function used for remove all Item by user from Favorite List
   deleteFav = () => {
-    console.log('favorite array:',this.state.FavArray);
+    console.log("favorite array:", this.state.FavArray);
     this.setState({ FavArray: [] });
   };
 
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
-    localStorage.setItem("searchResultArray", JSON.stringify(this.state.searchResultArray));
+    localStorage.setItem(
+      "searchResultArray",
+      JSON.stringify(this.state.searchResultArray)
+    );
   }
 
   // connect react with API that you build
@@ -135,6 +137,7 @@ class App extends React.Component {
                       Personal
                     </Link>
                   </li>
+
                   <li class="nav-item">
                     <Link
                       to="/Favorite"
@@ -146,7 +149,6 @@ class App extends React.Component {
                       Favorite
                     </Link>
                   </li>
-                  
                 </ul>
 
                 <form class="d-flex" action="./Search">
@@ -179,12 +181,7 @@ class App extends React.Component {
             exact
             path="/"
             component={(props) => {
-              return (
-                <Home
-                  ItemState={this.state.Item}
-                  getFav={this.getFav}
-                />
-              );
+              return <Home ItemState={this.state.Item} getFav={this.getFav} />;
             }}
           />
 
@@ -204,8 +201,6 @@ class App extends React.Component {
           />
 
           <Route exact path="/Personal" component={Personal} />
-        
-         
 
           <Route
             path="/Search"

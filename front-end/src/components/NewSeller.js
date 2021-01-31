@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "../newSeller.css";
+
 export default class NewSeller extends Component {
   constructor(props) {
     super(props);
@@ -10,75 +12,97 @@ export default class NewSeller extends Component {
       cotactInfo: "",
     };
   }
-  ChangHandler=(e)=>{
-    this.setState({[e.target.name]:e.target.value})
-  }
+  ChangHandler = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  SubmitHandler=(e)=>{
-    e.preventDefault()
-    console.log('bring state',this.state)
-    axios.post('http://localhost:5000/addUser',this.state)
-    .then(respons=>{
-      console.log(respons.data)
-    })
-    .catch(error=>{
-      console.log(error)
-    })
-  }
-
+  SubmitHandler = (e) => {
+    e.preventDefault();
+    console.log("bring state", this.state);
+    axios
+      .post("http://localhost:5000/addUser", this.state)
+      .then((respons) => {
+        console.log(respons.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    this.setState({ userName: "" });
+    this.setState({ name: "" });
+    this.setState({ cotactInfo: "" });
+  };
 
   render() {
-    const {userName,name,cotactInfo}= this.state
+    const { userName, name, cotactInfo } = this.state;
     return (
-      <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w780">
-          <div class="card card-3">
-            <div class="card-heading"></div>
-            <div class="card-body">
-              <h2 class="title">Registration Info</h2>
-              <form onSubmit={this.SubmitHandler} >
-                <div class="input-group newSeller">
-                <label>username</label>
-                  <input
-                    class="input--style-3"
-                    type="text"
-                    placeholder="userName"
-                    name="userName"
-                    value ={userName}
-                    onChange={this.ChangHandler}
-                  />
-                </div>
-                <div class="input-group newSeller">
-                <label className='newSellerLable'>name</label>
-                  <input
-                    class="input--style-3 js-datepicker"
-                    type="text"
-                    placeholder="enter your name"
-                    name="name"
-                    value = {name}
-                    onChange={this.ChangHandler}
-                  />
-                  <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                </div>
+      <div className="container">
+        <div className="myCard">
+          <div className="row">
+            <div className="col-md-6 b">
+              <div className="myLeftCtn">
+                <form
+                  className="myForm text-center"
+                  onSubmit={this.SubmitHandler}
+                >
+                  <header>Welcome</header>
+                  <div className="form-group">
+                    <i className="fa fa-user"></i>
+                    <input
+                      className="myInput"
+                      type="text"
+                      placeholder=" enter your username"
+                      name="userName"
+                      value={userName}
+                      onChange={this.ChangHandler}
+                      required
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-group">
+                    <i className="fa fa-user-circle-o"></i>
+                    <input
+                      className="myInput"
+                      type="text"
+                      placeholder="enter your name"
+                      name="name"
+                      value={name}
+                      onChange={this.ChangHandler}
+                      required
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-group">
+                    <i className="fa fa-envelope"></i>
+                    <input
+                      className="myInput"
+                      type="email"
+                      placeholder="enter your Email"
+                      name="cotactInfo"
+                      value={cotactInfo}
+                      onChange={this.ChangHandler}
+                      required
+                    />
+                  </div>
+                  <br></br>
 
-                <div class="input-group newSeller">
-                  Email:{" "}
-                  <input
-                    class="input--style-3"
-                    type="email"
-                    placeholder="enter your Email"
-                    name="cotactInfo"
-                    value={cotactInfo}
-                    onChange={this.ChangHandler}
-                  />
+                  <div class="p-t-10">
+                    <button className="form-group btn" type="submit">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div className="col-md-6 c">
+              <div className="myRightCtn">
+                <div className="box">
+                  <header>welcome</header>
+                  <p>
+                    After registering, you will be able to view the items you
+                    want to sell. You can also delete or update the item
+                  </p>
                 </div>
-
-                <div class="p-t-10">
-                  <button class="btn btn--pill btn--green" type="submit">
-                    Submit
-                  </button>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
