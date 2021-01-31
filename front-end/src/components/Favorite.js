@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import FavCard from './FavCard'
 export default class Favorite extends Component {
+    componentWillUpdate() {
+        localStorage.setItem('FavArray', JSON.stringify(this.props.FavArray));
+    }   
     render() {
         const ItemCard = this.props.FavArray.map((item, key) => {
             return (
@@ -15,7 +18,7 @@ export default class Favorite extends Component {
             )
         })
         return (
-            <div  className="topHeader boot">
+            <div  className="topHeader">
                 <h1>Your Favorite List</h1>
                 <button type="button" class="btn btn-outline-danger btnMore" onClick={this.props.deleteFav}> Clear List</button>
                 {ItemCard}

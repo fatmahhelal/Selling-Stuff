@@ -13,10 +13,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Item: [],
       FavArray: [],
-      ItemArray: [],
-
+      Item: [],
       searchResultArray: [],
       searchWord: "",
     };
@@ -42,12 +40,6 @@ class App extends React.Component {
       .catch((err) => {
         console.log("ERR: ", err);
       });
-  };
-
-  AddItemToArray = (item) => {
-    const Item = [...this.state.ItemArray];
-    Item.push(item);
-    this.setState({ ItemArray: Item });
   };
 
   // function used for add any Item by user to Favorite List
@@ -90,13 +82,7 @@ class App extends React.Component {
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
-
-    localStorage.setItem(
-      "searchResultArray",
-      JSON.stringify(this.state.searchResultArray)
-    );
-
-    localStorage.setItem("ItemArray", JSON.stringify(this.state.ItemArray));
+    localStorage.setItem("searchResultArray", JSON.stringify(this.state.searchResultArray));
   }
 
   // connect react with API that you build
@@ -123,7 +109,7 @@ class App extends React.Component {
           <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">
-                Selling Navbar
+                Selling
               </a>
               <button
                 class="navbar-toggler"
@@ -195,7 +181,6 @@ class App extends React.Component {
               return (
                 <Home
                   ItemState={this.state.Item}
-                  AddItemToArray={this.AddItemToArray}
                   getFav={this.getFav}
                 />
               );

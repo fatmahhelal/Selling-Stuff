@@ -4,20 +4,20 @@ export default class ItemInfo extends Component {
 
     constructor(props) {
         super(props)
-    
+
         this.state = {
-             morInfo:[]
+            morInfo: []
         }
     }
 
-   
-    
+
+
     render() {
         return (
-          <div className="topHeader boot
+            <div className="topHeader boot
           ">
-            
-             </div>
+
+            </div>
 
         )
     }

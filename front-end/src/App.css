@@ -1,4 +1,3 @@
-
 .App {
   text-align: center;
   font-family: 'Fira Mono', sans-serif !important;
@@ -42,3 +41,22 @@
 }
 
 
+.buttonCard {
+  width: 95px;
+  margin: 5px !important
+  
+}
+.botCon{
+  position: absolute;
+  bottom: 8px;
+  left: 19%;
+  right: 20%;
+}
+
+.priceCon{
+  left: 20%;
+  right: 20%;
+  background-color: black ;
+  color: whitesmoke;
+  font-weight: bold;
+}

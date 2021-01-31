@@ -12,13 +12,13 @@ export default class FavCard extends Component {
           <i class="material-icons">favorite</i></div>  
             <h3 class="card-text">{this.props.item.itemTitle}</h3>
             <p class="card-text">{this.props.item.description}</p>
-            <p class="card-text ratingCon">{this.props.item.price} </p>
+            <p class="card-text priceCon">{this.props.item.price} .SR</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">
                 <a href="/" target="inlike">
-                  <button type="button" class="btn btn-outline-success btnMore"> More
+                  <button type="button" class="btn btn-outline-success buttonCard"> More
         </button>
-                  <button type="button" class="btn btn-outline-success btnMore"> Contact
+                  <button type="button" class="btn btn-outline-success buttonCard"> Contact
         </button>
                 </a>
               </div>
