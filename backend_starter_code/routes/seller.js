@@ -248,6 +248,28 @@ router.delete("/deleteAllItem", async (req, res) => {
 
 
 
+router.put('/updateItem', async (req, res) => {
+  try {
+    let seller = await Seller.findOne({ userName: req.query.userName })
+    console.log("user Item: ", seller.item)
+    Item.findByIdAndUpdate( req.query.id , req.body,
+      (err, updateItem) => {
+        if (err) {
+          console.log('ERR: ', err);
+          res.json(err)
+        }
+        else {
+          console.log("Updated User : ", updateItem);
+          res.json(updateItem)
+        }
+      });
+  } catch (err) {
+    res.json(err)
+  }
+});
+
+
+
 
 // Export the Router so we can use it in the server.js file
 module.exports = router;
