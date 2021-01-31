@@ -59,18 +59,19 @@ router.get("/OneItem", (req, res) => {
     if (err) {
       console.log("ERR: ", err);
     } else {
-      res.json(foundItem);}
-
-  Item.findById(req.query.id, (err, foundUser) => {
-    console.log("FOUND USER: ", foundUser);
-    if (err) {
-      console.log("ERR: ", err);
-    } else {
-      res.json(foundUser);
-
+      res.json(foundItem);
     }
-  });
-})
+
+    Item.findById(req.query.id, (err, foundUser) => {
+      console.log("FOUND USER: ", foundUser);
+      if (err) {
+        console.log("ERR: ", err);
+      } else {
+        res.json(foundUser);
+
+      }
+    });
+  })
 });
 
 // /**
@@ -175,68 +176,48 @@ router.post("/AddItem", async (req, res) => {
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
-
  * Description: delete specific item by user 
  */
-router.delete('/item/:userName/:id', (req, res) => {
-  console.log('delete /item');
-  console.log("Id", req.params.id);
-  Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
-    console.log('FOUND USER: ', foundUser);
-    console.log('FOUND Item: ', foundUser[0].item);
-    foundUser[0].item.id(req.params.id).remove();
-    foundUser[0].save((err, result) => {
-      if (err) {
-        console.log('ERR: ', err);
-      } else {
-        res.json(result);
-      }
-    });
-  });
-})
+// router.delete('/item/:userName/:id', (req, res) => {
+//   console.log('delete /item');
+//   console.log("Id", req.params.id);
+//   Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
+//     console.log('FOUND USER: ', foundUser);
+//     console.log('FOUND Item: ', foundUser[0].item);
+//     foundUser[0].item.id(req.params.id).remove();
+//     foundUser[0].save((err, result) => {
+//       if (err) {
+//         console.log('ERR: ', err);
+//       } else {
+//         res.json(result);
+//       }
+//     });
+//   });
+// })
 
 
- 
-router.delete("/itemDelet", (req, res) => {
-  // console.log('delete /item');
-  // console.log("Id", req.params.id);
-  // Seller.find({ 'userName': req.params.userName }, (err, foundUser) => {
-  //   console.log('FOUND USER: ', foundUser);
-  //   console.log('FOUND Item: ', foundUser[0].item);
-  //   foundUser[0].item.id(req.params.id).remove();
-  //   foundUser[0].save((err, result) => {
-  //     if (err) {
-  //       console.log('ERR: ', err);
-  //     } else {
-  //       res.json(result);
-  //     }
-  //   });
-  // });
-  let seller = Seller.findOne({ userName: req.query.userName });
-  console.log({ userName: req.query.userName });
 
-  const ItemId = Item.findById(req.query.id);
-  console.log(ItemId);
-  //  ItemId.remove()
-  //  Item.save()
-});
-
-router.post("/AddItem", async (req, res) => {
+router.delete("/itemDelete", async (req, res) => {
   try {
+    console.log("delete /item");
     let seller = await Seller.findOne({ userName: req.query.userName });
-    console.log({ userName: req.query.userName });
-    if (seller) {
-      const newItem = new Item(req.body);
-      console.log(newItem);
-      await newItem.save();
-      seller.item.push(newItem._id);
-      await seller.save();
-      res.json(newItem);
+    // let itemfound = seller.item.indexOf(req.query.id)
+    // const ItemId = seller.item.findByIdAndRemove(req.query.id);
+    // ItemId.save()
+    let item = await Item.findById(req.query.id).remove();
+
+    console.log("FOUND USER: ", seller);
+    console.log("FOUND Item: ", item);
+    if (item) {
+      res.json(item);
+    } else {
+      res.json(err);
     }
   } catch (err) {
     res.json(err);
   }
 });
+
 
 
 /**
@@ -247,23 +228,23 @@ router.post("/AddItem", async (req, res) => {
  * Description: delete all item by seller 
  */
 
-router.delete("/deleteAllItem", (req, res) => {
-  console.log("delete /item");
-  Seller.find({ userName: req.query.userName }, (err, foundUser) => {
-    console.log("FOUND USER: ", foundUser);
-    console.log("FOUND Item: ", foundUser[0].item);
-    foundUser[0].item = [];
-
-    foundUser[0].save((err, result) => {
-      if (err) {
-        console.log("ERR: ", err);
-      } else {
-        res.json(result);
-      }
-    });
-  });
+router.delete("/deleteAllItem", async (req, res) => {
+  try {
+    console.log("delete /item");
+    let seller = await Seller.findOne({ userName: req.query.userName });
+    console.log("FOUND USER: ", seller);
+    console.log("FOUND Item: ", seller.item);
+    if (seller) {
+      seller.item = [];
+      await seller.save()
+      res.json(seller);
+    } else {
+      res.json(err);
+    }
+  } catch (err) {
+    res.json(err);
+  }
 });
-
 
 
 
