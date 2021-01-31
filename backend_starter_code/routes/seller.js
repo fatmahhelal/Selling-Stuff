@@ -159,6 +159,21 @@ router.post("/addUser", (req, res) => {
   });
 });
 
+
+router.get("/SellerItem", (req, res) => {
+  console.log("POST /users");
+  Item.find({sellerId: req.query.Id}, (err, newUser) => {
+    if (err) {
+      console.log("ERR: ", err);
+    } else {
+      console.log(newUser);
+      res.json(newUser);
+    }
+  });
+});
+
+
+
 /**
  * Action:      INDEX
  * Method:      post
@@ -175,8 +190,6 @@ router.post("/AddItem", async (req, res) => {
       newItem.sellerId = seller._id;
       console.log(newItem);
       await newItem.save();
-      seller.item.push(newItem._id);
-      await seller.save();
       res.json(newItem);
     }
   } catch (err) {
@@ -184,12 +197,24 @@ router.post("/AddItem", async (req, res) => {
   }
 });
 
+
 /**
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
  * Description: delete specific item by user 
  */
+
+router.delete("/itemDelete", async (req, res) => {
+  try {
+    console.log("delete /item");
+    let item = await Item.findByIdAndRemove( req.query.id );
+    console.log("FOUND Item: ", item);
+      res.json(item);
+}catch (err) {
+  res.json(err);
+}
+
 // router.delete('/item/:userName/:id', (req, res) => {
 //   console.log('delete /item');
 //   console.log("Id", req.params.id);
@@ -228,6 +253,7 @@ router.delete("/itemDelete", async (req, res) => {
   } catch (err) {
     res.json(err);
   }
+
 });
 
 
@@ -236,13 +262,25 @@ router.delete("/itemDelete", async (req, res) => {
  * Action:      INDEX
  * Method:      delete
  * URI:         /item
-
  * Description: delete all item by seller 
  */
 
 router.delete("/deleteAllItem", async (req, res) => {
   try {
     console.log("delete /item");
+
+    let sellerItem = await Item.find({ sellerId: req.query.userId }).remove();
+    console.log("FOUND USER: ", sellerItem);
+      await sellerItem.save()
+      res.json(sellerItem);
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+router.put('/updateItem', async (req, res) => {
+  try {
+
     let seller = await Seller.findOne({ userName: req.query.userName });
     console.log("FOUND USER: ", seller);
     console.log("FOUND Item: ", seller.item);
@@ -285,6 +323,7 @@ router.put('/updateItem', async (req, res) => {
   try {
     let seller = await Seller.findOne({ userName: req.query.userName })
     console.log("user Item: ", seller.item)
+
     Item.findByIdAndUpdate( req.query.id , req.body,
       (err, updateItem) => {
         if (err) {
