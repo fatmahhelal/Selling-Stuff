@@ -17,7 +17,11 @@ export default class Home extends Component {
        
       );
     });
-    return <div className="topHeader boot">{ItemCard}</div>;
+    return (
+
+      <div><h1 className='wel'>Welcome to the world of selling</h1>
+    <div className="topHeader boot">{ItemCard}</div>
+    </div>);
   }
 
 }

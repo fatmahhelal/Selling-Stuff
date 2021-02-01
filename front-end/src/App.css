@@ -10,11 +10,12 @@
   padding: 5px;
   margin: 20px;
   float: left;
-  box-shadow: 3px 3px 3px 3px rgb(206, 204, 204);
+  box-shadow: 3px 3px 3px 3px rgb(153, 150, 150);
   position: relative;
   bottom: 30px;
   text-align: center;
   display: inline;
+  /* background: linear-gradient(45deg, rgb(135, 240, 214), rgb(29, 126, 182));; */
 }
 .boot{
   margin-bottom: 30px;
@@ -56,7 +57,7 @@
 .priceCon{
   left: 20%;
   right: 20%;
-  background-color: black ;
+  background-color: rgba(0, 0, 0, 0.247) ;
   color: whitesmoke;
   font-weight: bold;
 }
@@ -84,9 +85,36 @@
   justify-content: center;
 
 }
-/* .c{
-  margin-top: 100px;
+
+
+.favDiv{
+  display: inline-block;
 }
-.b{
-  margin-top: 100px;
-} */
+
+
+.wel{
+  position: relative;
+ top: 80px;
+  color: black;
+  text-align: center;
+  animation-name: anim;
+  animation-direction: alternate-reverse;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes anim {
+  0% {
+    display: none;
+    color: rgba(26, 165, 158, 0.842);
+   
+  }
+
+  100% {
+    color: rgb(41, 111, 177);
+    
+  }
+}

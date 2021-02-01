@@ -128,6 +128,32 @@ router.get("/oneSeller", (req, res) => {
   });
 });
 
+/**
+ * Action:      INDEX
+ * Method:      Get
+ * URI:         /oneSeller
+ * Description: find one seller by username and password
+ */
+
+router.get("/oneSellerpas", (req, res) => {
+  console.log("You Item List");
+  Seller.find({ userName: req.query.userName, password: req.query.password}, (err, foundUser) => {
+    console.log("FOUND USER: ", foundUser);
+    if (err) {
+      console.log("ERR: ", err);
+    } else {
+      res.json(foundUser);
+    }
+  });
+});
+
+/**
+ * Action:      INDEX
+ * Method:      Get
+ * URI:         /oneSeller
+ * Description: find one seller by id
+ */
+
 router.get("/oneSellerId", (req, res) => {
   console.log("You Item List");
   Seller.findById(req.query.id, (err, foundUser) => {
@@ -158,6 +184,8 @@ router.post("/addUser", (req, res) => {
     }
   });
 });
+
+
 
 
 router.get("/SellerItem", (req, res) => {

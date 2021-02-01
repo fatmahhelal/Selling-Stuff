@@ -20,7 +20,21 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
+.oldUser{
+  
+  position: relative;
+  background-image: url("https://media.giphy.com/media/lTXepVrUf7XBoBGgzW/giphy.gif");
+  background-size: 400px 500px;
+  background-repeat: no-repeat;
+  border-radius: 25px;
+  height: 100%;
+  padding: 25px;
+  color: rgb(192, 192, 192);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .myRightCtn {
   position: relative;
   background-image: url("https://zaayega.com/blog/wp-content/uploads/2015/03/Benefits-of-selling-products-online-in-India.jpg");
@@ -45,7 +59,7 @@
   background-color: seashell;
 }
 .myLeftCtn header {
-  color: seashell;
+  color: rgba(24, 23, 22, 0.63);
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 20px;
@@ -116,4 +130,5 @@
 .myLeftCtn .fa {
   position: relative;
   left: 36px;
+  color:  rgb(29, 126, 182)
 }

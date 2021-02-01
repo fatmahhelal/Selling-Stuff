@@ -3,10 +3,12 @@ import axios from "axios";
 import "./App.css";
 import Home from "./components/Home";
 import Favorite from "./components/Favorite";
-import Personal from "./components/Personal";
+// import Personal from "./components/Personal";
 //import SellerInfo from './SellerInfo';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
+import NewSeller from './components/NewSeller'
+import OldUser from './components/OldUser'
 
 class App extends React.Component {
   constructor(props) {
@@ -132,11 +134,12 @@ class App extends React.Component {
                       Home
                     </Link>
                   </li>
-                  <li class="nav-item">
+                  {/* <li class="nav-item">
                     <Link to="/Personal" class="nav-link">
                       Personal
                     </Link>
-                  </li>
+                  </li> */}
+                
 
                   <li class="nav-item">
                     <Link
@@ -147,6 +150,16 @@ class App extends React.Component {
                       aria-disabled="true"
                     >
                       Favorite
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link to="/NewSeller" class="nav-link">
+                      sign up
+                    </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link to="/OldUser" class="nav-link">
+                      sign in
                     </Link>
                   </li>
                 </ul>
@@ -200,7 +213,9 @@ class App extends React.Component {
             }}
           />
 
-          <Route exact path="/Personal" component={Personal} />
+          {/* <Route exact path="/Personal" component={Personal} /> */}
+          <Route exact path="/NewSeller" component={NewSeller}></Route>
+          <Route exact path="/OldUser" component={OldUser}></Route>
 
           <Route
             path="/Search"

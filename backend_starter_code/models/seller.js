@@ -18,9 +18,11 @@ const sellerSchema = new mongoose.Schema({
   userName: { type: String, require: true, unique: true },
   name: { type: String, require: true },
   cotactInfo: { type: String, require: true },
-
-  // [itemSchema]
+  password:{type:String}
 });
+
+
+
 
 const Seller = mongoose.model("Seller", sellerSchema);
 

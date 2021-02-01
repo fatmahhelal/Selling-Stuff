@@ -10,6 +10,8 @@ export default class NewSeller extends Component {
       userName: "",
       name: "",
       cotactInfo: "",
+      password:"",
+      welcomeText:""
     };
   }
   ChangHandler = (e) => {
@@ -30,21 +32,24 @@ export default class NewSeller extends Component {
     this.setState({ userName: "" });
     this.setState({ name: "" });
     this.setState({ cotactInfo: "" });
+    this.setState({ password: "" });
+    this.setState({welcomeText:"You have account now"})
   };
 
   render() {
-    const { userName, name, cotactInfo } = this.state;
+    const { userName, name, cotactInfo ,password} = this.state;
     return (
       <div className="container">
         <div className="myCard">
           <div className="row">
             <div className="col-md-6 b">
               <div className="myLeftCtn">
+              <header>{this.state.welcomeText}</header>
                 <form
                   className="myForm text-center"
                   onSubmit={this.SubmitHandler}
                 >
-                  <header>Welcome</header>
+                  
                   <div className="form-group">
                     <i className="fa fa-user"></i>
                     <input
@@ -84,10 +89,23 @@ export default class NewSeller extends Component {
                     />
                   </div>
                   <br></br>
+                  <div className="form-group">
+                    <i className="fa fa-key"></i>
+                    <input
+                      className="myInput"
+                      type="password"
+                      placeholder="enter your password"
+                      name="password"
+                      value={password}
+                      onChange={this.ChangHandler}
+                      required
+                    />
+                  </div>
+                  <br></br>
 
                   <div class="p-t-10">
                     <button className="form-group btn" type="submit">
-                      Submit
+                      sign up
                     </button>
                   </div>
                 </form>

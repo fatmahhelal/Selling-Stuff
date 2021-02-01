@@ -18,7 +18,7 @@ export default class Favorite extends Component {
             )
         })
         return (
-            <div  className="topHeader">
+            <div  className="topHeader favDiv">
                 <h1>Your Favorite List</h1>
                 <button type="button" class="btn btn-outline-danger btnMore" onClick={this.props.deleteFav}> Clear List</button>
                 {ItemCard}
