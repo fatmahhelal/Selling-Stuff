@@ -29,11 +29,8 @@ export default class NewSeller extends Component {
       .catch((error) => {
         console.log(error);
       });
-    this.setState({ userName: "" });
-    this.setState({ name: "" });
-    this.setState({ cotactInfo: "" });
-    this.setState({ password: "" });
-    this.setState({welcomeText:"You have account now"})
+    this.setState({ userName: "",name: "", cotactInfo: "",password: "",welcomeText:"You have account now"});
+    
   };
 
   render() {

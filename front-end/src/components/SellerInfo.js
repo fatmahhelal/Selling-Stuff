@@ -25,6 +25,14 @@ import axios from "axios";
 
 
 export default class SellerInfo extends Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       addNewPage:false
+    }
+  }
+  
   deleteAll =()=>{
     axios
       .delete(`http://localhost:5000/deleteAllItem?userId=${this.props.sellerId}`)
@@ -35,6 +43,8 @@ export default class SellerInfo extends Component {
       .catch((err) => {
         console.log("ERR: ", err);
       });
+
+    
   }
     render() {
         const ItemCard = this.props.Item.map((Item, key) => {
@@ -47,9 +57,15 @@ export default class SellerInfo extends Component {
            
           );
         });
+        
         return <div className="topHeader boot">
           <button onClick={this.deleteAll}>Delete All</button>
-          {ItemCard}</div>;
+          <button>add new item</button>
+          {ItemCard}
+          
+          
+          </div>;
+
       }
     }
 
