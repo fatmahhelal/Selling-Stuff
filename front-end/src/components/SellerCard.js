@@ -1,6 +1,21 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class SellerCard extends Component {
+  //function delete item end point delete
+  //item id will be {this.props.item._id}
+  deleteItem =()=>{
+    axios
+      .delete(`http://localhost:5000/itemDelete?id=${this.props.item._id}`)
+      .then((response) => {
+        console.log("RESPONSE: ", response);
+        console.log("DATA: ", response.data);
+      })
+      .catch((err) => {
+        console.log("ERR: ", err);
+      });
+  }
+
   render() {
     return (
     
@@ -24,7 +39,7 @@ export default class SellerCard extends Component {
                     <button
                       type="button"
                       class="btn btn-outline-success btnMore"
-                    >
+                    onClick={this.deleteItem}>
                       {" "}
                       Delete
                     </button>

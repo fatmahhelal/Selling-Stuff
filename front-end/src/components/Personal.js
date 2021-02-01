@@ -14,12 +14,12 @@ export default class Personal extends Component {
             <h1 className="personal">Open Your Personal Page As:</h1><br/>
             <Link to="/NewSeller">
               {" "}
-              <button
+              {/* <button
                 type="button"
                 class="btn btn-primary btn-lg btn-block pesBut"
               >
                 New Seller
-              </button>
+              </button> */}
             </Link>
             <br></br><br/>
             <Link to="/OldUser">
