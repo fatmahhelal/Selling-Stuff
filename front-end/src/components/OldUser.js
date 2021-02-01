@@ -134,7 +134,8 @@ export default class OldUser extends Component {
                 <Route  exact
               path="/SellerInfo"
               component={(props) => {
-                return <SellerInfo Item={this.state.sellerItem}/>}}
+                return <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId}
+                />}}
                 ></Route>
 
               </Switch>
