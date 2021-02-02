@@ -11,6 +11,7 @@ export default class OldUser extends Component {
     this.state = {
       sellerName: "",
       password: "",
+      errorMes:"",
       sellerId: "",
       sellerItem: [],
       login: false,
@@ -32,6 +33,7 @@ export default class OldUser extends Component {
       })
       .catch((err) => {
         console.log("ERR: ", err);
+        this.setState({errorMes:"wrong password or username try again"})
       });
   };
 
@@ -56,6 +58,7 @@ export default class OldUser extends Component {
             <div className="col-md-6 b">
               <div className="myLeftCtn">
                 <header>{this.state.welcomeText}</header>
+                <p>{this.state.errorMes}</p>
                 <form
                   className="myForm text-center"
                   onSubmit={this.SubmitHandler}

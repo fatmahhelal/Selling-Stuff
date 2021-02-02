@@ -11,7 +11,8 @@ export default class NewSeller extends Component {
       name: "",
       cotactInfo: "",
       password: "",
-      welcomeText: ""
+      welcomeText: "",
+      errorMes:""
     };
   }
   ChangHandler = (e) => {
@@ -25,11 +26,13 @@ export default class NewSeller extends Component {
       .post("http://localhost:5000/addUser", this.state)
       .then((respons) => {
         console.log(respons.data);
+        this.setState({ userName: "", name: "", cotactInfo: "", password: "", welcomeText: "You have account now" });
       })
       .catch((error) => {
         console.log(error);
+        this.setState({errorMes:"the username already used "})
       });
-    this.setState({ userName: "", name: "", cotactInfo: "", password: "", welcomeText: "You have account now" });
+    
 
   };
 
@@ -42,6 +45,7 @@ export default class NewSeller extends Component {
             <div className="col-md-6 b">
               <div className="myLeftCtn">
                 <header>{this.state.welcomeText}</header>
+                <p>{this.state.errorMes}</p>
                 <form
                   className="myForm text-center"
                   onSubmit={this.SubmitHandler}
