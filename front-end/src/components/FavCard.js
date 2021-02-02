@@ -4,8 +4,8 @@ export default class FavCard extends Component {
   render() {
     return (
 
-      <div id="topHeader" className="boot">
-        <div class="card">
+      <div className="boot">
+      <div class="card">
           <img src={this.props.item.image} width='300px' height='300px'></img>
           <div class="card-body">
           <div className='material-icons favorite' onClick={this.props.removeFav}>
