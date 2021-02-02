@@ -19,7 +19,7 @@
 }
 .boot{
   margin-bottom: 30px;
-  left: 1.2%;
+  left: 1.4%;
   position: relative;
   top: 8px;
   bottom: 1%;
@@ -114,4 +114,15 @@
     color: rgb(41, 111, 177);
     
   }
+}
+.cardInfo
+{
+  width: 800px;
+  height: 800px !important;
+  margin-bottom: 30px;
+  left: 20% !important;
+  position: relative;
+  top: 8px;
+  bottom: 1%;
+  
 }

@@ -4,11 +4,13 @@ import "./App.css";
 import Home from "./components/Home";
 import Favorite from "./components/Favorite";
 // import Personal from "./components/Personal";
-//import SellerInfo from './SellerInfo';
+import ItemInfo from './components/ItemInfo';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
 import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
+import SellerCard from './components/SellerCard'
+import AddItem from './components/AddItem'
 
 
 class App extends React.Component {
@@ -19,12 +21,22 @@ class App extends React.Component {
       Item: [],
       searchResultArray: [],
       searchWord: "",
+      userStatus: false, 
+      ItemId:""
     };
   }
 
   componentDidMount = () => {
     this.getAllItem();
   };
+
+  handleLogin = () => {
+    this.setState({ userStatus: !this.state.userStatus })
+  }
+  
+  handleItemInfo = (id) => {
+    this.setState({ ItemId: id })
+  }
 
   searchResult = () => {
     var search = this.state.searchWord;
@@ -80,16 +92,6 @@ class App extends React.Component {
     console.log("favorite array:", this.state.FavArray);
     this.setState({ FavArray: [] });
   };
-
-  componentWillUpdate() {
-    // localStorage Favorite item array so we don't need to stor in db
-    localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
-    localStorage.setItem(
-      "searchResultArray",
-      JSON.stringify(this.state.searchResultArray)
-    );
-  }
-
   // connect react with API that you build
   // is the same as before exactly
   // this is the way that we learn till now
@@ -107,134 +109,246 @@ class App extends React.Component {
       });
   };
 
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                Selling
-              </a>
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarsExampleDefault"
-                aria-controls="navbarsExampleDefault"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                  <li class="nav-item active">
-                    <Link to="/" class="nav-link" aria-current="page">
-                      Home
-                    </Link>
-                  </li>
-                  {/* <li class="nav-item">
-                    <Link to="/Personal" class="nav-link">
-                      Personal
-                    </Link>
-                  </li> */}
-                
-
-                  <li class="nav-item">
-                    <Link
-                      to="/Favorite"
-                      class="nav-link"
-                      href="#"
-                      tabindex="-1"
-                      aria-disabled="true"
-                    >
-                      Favorite
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <Link to="/NewSeller" class="nav-link">
-                      sign up
-                    </Link>
-                  </li>
-                  <li class="nav-item">
-                    <Link to="/OldUser" class="nav-link">
-                      sign in
-                    </Link>
-                  </li>
-                 
-                </ul>
-
-                <form class="d-flex" action="./Search">
-                  <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    onChange={(e) => {
-                      this.setState({ searchWord: e.target.value });
-                    }}
-                    value={this.state.searchWord}
-                  ></input>
-                  <Link to="/Search">
-                    <button
-                      class="fa fa-search"
-                      class="btn btn-outline-success"
-                      type="button"
-                      onClick={this.searchResult}
-                    >
-                      Search
-                    </button>
-                  </Link>
-                </form>
-              </div>
-            </div>
-          </nav>
-
-          <Route
-            exact
-            path="/"
-            component={(props) => {
-              return <Home ItemState={this.state.Item} getFav={this.getFav} />;
-            }}
-          />
-
-          <Route
-            exact
-            path="/Favorite"
-            component={(props) => {
-              return (
-                <Favorite
-                  FavArray={this.state.FavArray}
-                  getFav={this.getFav}
-                  removeFav={this.removeFav}
-                  deleteFav={this.deleteFav}
-                />
-              );
-            }}
-          />
-
-          {/* <Route exact path="/Personal" component={Personal} /> */}
-          <Route exact path="/NewSeller" component={NewSeller}></Route>
-          <Route exact path="/OldUser" component={OldUser}></Route>
-          
-          
-
-          <Route
-            path="/Search"
-            render={(props) => {
-              return (
-                <Search
-                  searchResultArray={this.state.searchResultArray}
-                  getFav={this.getFav}
-                />
-              );
-            }}
-          />
-        </Router>
-      </div>
+  componentWillUpdate() {
+    // localStorage Favorite item array so we don't need to stor in db
+    localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
+    localStorage.setItem(
+      "searchResultArray",
+      JSON.stringify(this.state.searchResultArray)
     );
+  }
+
+  render() {
+    const links = [
+      {
+        to: '/', title: 'Home',
+        homeProps: { ItemState: this.state.Item, getFav: this.getFav }
+      },
+      { to: '/Favorite', title: 'Favorite' },
+      { to: '/NewSeller', title: 'Sign up' },
+      { to: '/OldUser', title: 'Sign In' },
+    ]
+
+    const Login = [
+      {
+        to: '/', title: 'Home',
+        homeProps: { ItemState: this.state.Item, getFav: this.getFav }
+      },
+      { to: '/Favorite', title: 'Favorite' },
+      { to: '/OldUser', title: 'Personal' },
+      // { to: '/OldUser', title: 'Sign out' },
+
+    ]
+
+    const bar = [
+      <div>
+        <a class="navbar-brand" href="#">Selling</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsExampleDefault"
+          aria-controls="navbarsExampleDefault"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    ]
+
+    const search = [
+      <form class="d-flex" action="./Search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          onChange={(e) => {
+            this.setState({ searchWord: e.target.value });
+          }}
+          value={this.state.searchWord}
+        ></input>
+        <Link to="/Search">
+          <button
+            class="fa fa-search"
+            class="btn btn-outline-success"
+            type="button"
+            onClick={this.searchResult}
+          > Search</button>
+        </Link>
+      </form>
+    ]
+    
+    if (!this.state.userStatus) {
+      return (
+        <div className="App">
+          <Router>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+              <div class="container-fluid">
+                {bar}
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                    {links.map((one, index) => (
+                      <li class="nav-item">
+                        <Link
+                          to={one.to}
+                          class="nav-link"
+                          aria-current="page"
+                          href={one.href}
+                        >
+                          {one.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  {search}
+                </div>
+              </div>
+            </nav>
+
+            <Route
+              exact
+              path="/"
+              component={(props) => {
+                return <Home
+                  // {...props}
+                  // {...homeProps}
+                  ItemState={this.state.Item} getFav={this.getFav}
+                  handleItemInfo={this.handleItemInfo}
+                />;
+              }}
+            />
+
+            <Route
+              exact
+              path="/Favorite"
+              component={(props) => {
+                return (
+                  <Favorite
+                    FavArray={this.state.FavArray}
+                    getFav={this.getFav}
+                    removeFav={this.removeFav}
+                    deleteFav={this.deleteFav}
+                  />
+                );
+              }}
+            />
+
+            {/* <Route exact path="/Personal" component={Personal} /> */}
+            <Route exact path="/NewSeller" component={NewSeller}></Route>
+            <Route exact path="/AddItem" component={AddItem}></Route>
+            <Route exact path="/OldUser" component={(props) => {
+              return (
+                <OldUser
+                  handleLogin={this.handleLogin}
+                />
+              );
+            }}
+            />
+                  <Route exact path='/ItemInfo/:id'
+                  component={(props) => {
+              return (
+                <ItemInfo
+                  itemId={this.state.ItemId}
+                />
+              );
+            }} />
+            
+            <Route
+              path="/Search"
+              render={(props) => {
+                return (
+                  <Search
+                    searchResultArray={this.state.searchResultArray}
+                    getFav={this.getFav}
+                  />
+                );
+              }}
+            />
+          </Router>
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <Router>
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+              <div class="container-fluid">
+                {bar}
+
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                  <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                    {Login.map((one, index) => (
+                      <li class="nav-item">
+                        <Link
+                          to={one.to}
+                          class="nav-link"
+                          aria-current="page"
+                          href={one.href}
+                        >
+                          {one.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  {search}
+                </div>
+              </div>
+            </nav>
+
+            <Route
+              exact
+              path="/"
+              component={(props) => {
+                return <Home
+                  // {...props}
+                  // {...homeProps}
+                  ItemState={this.state.Item} getFav={this.getFav}
+                  handleItemInfo={this.state.handleItemInfo}
+                  
+                />;
+              }}
+            />
+
+            <Route
+              exact
+              path="/Favorite"
+              component={(props) => {
+                return (
+                  <Favorite
+                    FavArray={this.state.FavArray}
+                    getFav={this.getFav}
+                    removeFav={this.removeFav}
+                    deleteFav={this.deleteFav}
+                  />
+                );
+              }}
+            />
+
+            {/* <Route exact path="/Personal" component={Personal} /> */}
+            <Route exact path="/NewSeller" component={NewSeller}></Route>
+            <Route exact path="/OldUser" component={OldUser}></Route>
+            <Route exact path="/AddItem" component={AddItem}></Route>
+
+            <Route
+              path="/Search"
+              render={(props) => {
+                return (
+                  <Search
+                    searchResultArray={this.state.searchResultArray}
+                    getFav={this.getFav}
+                  />
+                );
+              }}
+            />
+          </Router>
+        </div>
+      );
+    }
+
   }
 }
 

@@ -19,11 +19,6 @@ export default class AddItem extends Component {
         this.setState({[e.target.name]:e.target.value})
       }
       SubmitHandler=(e)=>{
-        //   const itemTitle = this.state.itemTitle
-        //   const image = this.state.image
-        //   const description = this.state.description
-        //   const price = this.state.price
-        //   const stateItem = this.state.stateItem
         const {itemTitle ,image,description,price,stateItem}= this.state
         e.preventDefault()
         console.log(this.state)
@@ -40,24 +35,8 @@ export default class AddItem extends Component {
     render() {
         const {userName,itemTitle ,image,description,price,stateItem}= this.state
         return (
-            // <div>
-            //   <br></br><br></br><br></br><br></br><br></br><br></br>
-            //    <form onSubmit={this.SubmitHandler}>
-            //    userName  <input name='userName' value={userName} onChange={this.ChangHandler}></input>
-            //    itemTitle   <input name='itemTitle' value={itemTitle} onChange={this.ChangHandler}></input>
-            //    image  <input name='image' value={image} onChange={this.ChangHandler}></input>
-            //    description  <input name='description' value={description} onChange={this.ChangHandler}></input>
-            //    price <input name='price' value={price} onChange={this.ChangHandler}></input>
-            //    state <input name='stateItem' value={stateItem} onChange={this.ChangHandler}></input>
-
-            //    <button type="submit">submit</button>
-
-            //    </form>
-
-
-            // </div>
+      
             <div className="container">
-        
           <div className="row">
             <div className="col-md-6 b">
               <div className="myLeftCtn add">
@@ -147,17 +126,7 @@ export default class AddItem extends Component {
                 </form>
               </div>
             </div>
-            {/* <div className="col-md-6 c">
-              <div className="myRightCtn">
-                <div className="box">
-                  <header>welcome</header>
-                  <p>
-                    After registering, you will be able to view the items you
-                    want to sell. You can also delete or update the item
-                  </p>
-                </div>
-              </div>
-            </div> */}
+         
           </div>
         </div>
      

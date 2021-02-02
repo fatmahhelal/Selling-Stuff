@@ -48,7 +48,7 @@ router.get("/allItem", (req, res) => {
 
 router.get("/SellerItem", (req, res) => {
   console.log("POST /users");
-  Item.find({sellerId: req.query.Id}, (err, newUser) => {
+  Item.find({ sellerId: req.query.Id }, (err, newUser) => {
     if (err) {
       console.log("ERR: ", err);
     } else {
@@ -190,7 +190,7 @@ router.post("/addUser", (req, res) => {
 
 router.get("/SellerItem", (req, res) => {
   console.log("POST /users");
-  Item.find({sellerId: req.query.Id}, (err, newUser) => {
+  Item.find({ sellerId: req.query.Id }, (err, newUser) => {
     if (err) {
       console.log("ERR: ", err);
     } else {
@@ -270,8 +270,8 @@ router.delete("/deleteAllItem", async (req, res) => {
 
     let sellerItem = await Item.find({ sellerId: req.query.userId }).remove();
     console.log("FOUND USER: ", sellerItem);
-      await sellerItem.save()
-      res.json(sellerItem);
+    await sellerItem.save()
+    res.json(sellerItem);
   } catch (err) {
     res.json(err);
   }
@@ -289,7 +289,7 @@ router.delete("/deleteAllItem", async (req, res) => {
 
 router.put('/updateItem', async (req, res) => {
   try {
-    Item.findByIdAndUpdate( req.query.id , req.body,
+    Item.findByIdAndUpdate(req.query.id, req.body,
       (err, updateItem) => {
         if (err) {
           console.log('ERR: ', err);

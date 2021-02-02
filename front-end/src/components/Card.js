@@ -19,6 +19,12 @@ export default class Card extends Component {
 
   componentDidMount() {
     this.getSeller()
+
+  }
+  
+  handleNew=()=>{
+        this.props.handleItemInfo(this.props.item._id)
+        window.open('/ItemInfo')
   }
   getSeller = () => {
     const sellerId = this.props.item.sellerId
@@ -30,6 +36,7 @@ export default class Card extends Component {
           sellerContact: response.data.cotactInfo
 
         })
+
         console.log(response.data)
       })
       .catch((err) => {
@@ -48,30 +55,17 @@ export default class Card extends Component {
       })
   }
 
-  getAllItem = () => {
-    axios
-      .get(`http://localhost:5000/oneSellerId`)
-      .then((response) => {
-        console.log("RESPONSE: ", response);
-        console.log("DATA: ", response.data);
-        this.setState({ Item: response.data });
-      })
-      .catch((err) => {
-        console.log("ERR: ", err);
-      });
-  };
-  
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("sellerName", JSON.stringify(this.state.sellerName));
     localStorage.setItem("sellerContact", JSON.stringify(this.state.sellerContact));
+    // localStorage.setItem("itemId", JSON.stringify(this.props.item._id));
   }
   render() {
 
     return (
       <Router>
-
-        <div id="topHeader" className="boot">
+        <div className="boot">
           <div class="card">
             <img src={this.props.item.image} width='300px' height='300px'></img>
             <div class="card-body">
@@ -85,16 +79,24 @@ export default class Card extends Component {
               <p class="card-text">Selling By: {this.state.sellerName}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
-                  <Link to={`/ItemInfo/:${this.props.item._id}`} >
-                    <button type="button" class="btn btn-outline-success buttonCard" onClick={this.getAllItem} >More</button>
+                  <Link to={`/ItemInfo/:${this.props.item._id}`}>
+                    <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
                   </Link>
                   <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button>
 
-                  <Route exact path='/ItemInfo/:id' component={ItemInfo} />
+                  {/* <Route exact path='/ItemInfo/:id' component={(props) => {
+                return (
+                  <ItemInfo
+                    itemId={this.props.item._id}
+                  />
+                );
+              }} /> */}
                 </div>
               </div>
             </div>
           </div>
+
+
         </div>
       </Router>
 
@@ -102,3 +104,17 @@ export default class Card extends Component {
     )
   }
 }
+
+
+// {/* <Link to={`/ItemInfo/:${this.props.item._id}`}>
+//                     <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
+//                   </Link>
+//                   <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button> */}
+
+              //     {/* <Route exact path='/ItemInfo/:id' component={(props) => {
+              //   return (
+              //     <ItemInfo
+              //       itemId={this.props.item._id}
+              //     />
+              //   );
+              // }} /> */}

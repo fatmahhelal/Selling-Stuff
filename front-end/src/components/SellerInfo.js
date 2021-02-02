@@ -1,17 +1,57 @@
-import React, { Component } from "react";
-import SellerCard from "./SellerCard";
+// import React, { Component } from 'react'
+// import SellerCard from './SellerCard'
+
+
+
+// export default class SellerInfo extends Component {
+//     render() {
+//         const ItemCard = this.props.Item.map((Item, key) => {
+//           return (
+//             <SellerCard
+//               key={key}
+//               item={Item}
+//             />
+
+//           );
+//         });
+//         return <div className="topHeader boot">{ItemCard}</div>;
+//       }
+//     }
+
+import React, { Component } from 'react'
+import SellerDesh from './SellerDesh'
 import axios from "axios";
 
 export default class SellerInfo extends Component {
   constructor(props) {
+
     super(props);
 
     this.state = {
-      addNewPage: false,
+      sellerItem: [],
+
     };
   }
 
-  deleteAll = () => {
+  componentDidMount() {
+    this.getsellerItem()
+  }
+  getsellerItem = () => {
+    axios
+      .get(`http://localhost:5000/SellerItem?Id=${this.props.sellerId}`)
+      .then((response) => {
+        console.log("getSellerItems: ", response);
+        console.log("getSellerItemsData: ", response.data);
+        this.setState({ sellerItem: response.data });
+      })
+      .catch((err) => {
+        console.log("ERR: ", err);
+      });
+  };
+
+  
+  deleteAll =()=>{
+
     axios
       .delete(
         `http://localhost:5000/deleteAllItem?userId=${this.props.sellerId}`
@@ -26,26 +66,22 @@ export default class SellerInfo extends Component {
   };
 
   openAddItem=()=>{
-    window.open("/AddItem");
+    window.open("/AddItem","_self");
   }
-  render() {
-    const ItemCard = this.props.Item.map((Item, key) => {
-      return <SellerCard key={key} item={Item} />;
-    });
 
-    return (
-      <div className="topHeader boot">
-          <h1>your item</h1>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-          <button class="btn btn-primary me-md-2" onClick={this.deleteAll}>
-            Delete All
-          </button>
-          <button class="btn btn-primary" type="button" onClick={this.openAddItem}>
-            add new item
-          </button>
-        </div>
-        {ItemCard}
-      </div>
-    );
+  render() {
+
+    return <div className="topHeader boot">
+      <h1>Hello, {this.props.sellerName}</h1>
+      <h1>Your Items List</h1>
+      <button class="btn btn-danger btnMore" onClick={this.deleteAll}>Delete All</button>
+      <button class="btn btn-primary btnMore"onClick={this.openAddItem}>Add New Item</button>
+      <SellerDesh sellerItem={this.state.sellerItem} /></div>;
   }
 }
+
+    
+    
+
+
+
