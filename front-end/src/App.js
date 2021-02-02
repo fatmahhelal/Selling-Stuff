@@ -10,6 +10,7 @@ import Search from "./components/Search";
 import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -162,6 +163,7 @@ class App extends React.Component {
                       sign in
                     </Link>
                   </li>
+                 
                 </ul>
 
                 <form class="d-flex" action="./Search">
@@ -216,6 +218,8 @@ class App extends React.Component {
           {/* <Route exact path="/Personal" component={Personal} /> */}
           <Route exact path="/NewSeller" component={NewSeller}></Route>
           <Route exact path="/OldUser" component={OldUser}></Route>
+          
+          
 
           <Route
             path="/Search"

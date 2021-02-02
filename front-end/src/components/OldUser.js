@@ -70,7 +70,7 @@ export default class OldUser extends Component {
                     type="text"
                     placeholder=" enter your username"
                     name="userName"
-                    // value={userName}
+                    
                     onChange={(e) => {
                       this.setState({ sellerName: e.target.value });
                     }}
