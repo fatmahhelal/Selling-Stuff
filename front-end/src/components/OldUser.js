@@ -7,14 +7,18 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 export default class OldUser extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       sellerName: "",
       password: "",
       sellerId: "",
       sellerItem: [],
+
+      login: false,
+      name: ""
+
       login: false, 
       name:""
+
 
     };
   }
@@ -35,9 +39,13 @@ export default class OldUser extends Component {
       });
   };
 
-  // componentDidMount = () => {
-  //   this.getsellerItem();
-  // };
+  componentWillUpdate() {
+    // localStorage Favorite item array so we don't need to stor in db
+    localStorage.setItem("Item", JSON.stringify(this.state.sellerItem));
+    localStorage.setItem("sellerId", JSON.stringify(this.state.sellerId)
+    );
+  }
+
 
 
 
@@ -68,7 +76,7 @@ export default class OldUser extends Component {
                       type="text"
                       placeholder=" enter your username"
                       name="userName"
-                      // value={userName}
+
                       onChange={(e) => {
                         this.setState({ sellerName: e.target.value });
                       }}
@@ -111,21 +119,33 @@ export default class OldUser extends Component {
           </div>
         </div>
       </div>
+
   
+
       </Router>
       )
     }
     else {
       return (
 
-
-
-        
         <Router>
           <Switch>
             <Route exact
               path="/SellerInfo"
               component={(props) => {
+
+                return <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
+              }}
+            ></Route>
+
+          </Switch>
+        </Router>
+
+      )
+    }
+  }
+}
+
 
                 return <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
               }}
@@ -141,4 +161,3 @@ export default class OldUser extends Component {
      }
     }}
    
-

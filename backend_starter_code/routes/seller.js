@@ -73,16 +73,6 @@ router.get("/OneItem", (req, res) => {
     } else {
       res.json(foundItem);
     }
-
-    Item.findById(req.query.id, (err, foundUser) => {
-      console.log("FOUND USER: ", foundUser);
-      if (err) {
-        console.log("ERR: ", err);
-      } else {
-        res.json(foundUser);
-
-      }
-    });
   })
 });
 
