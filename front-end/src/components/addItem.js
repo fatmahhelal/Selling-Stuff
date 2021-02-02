@@ -11,7 +11,8 @@ export default class AddItem extends Component {
             image:'',
             description :'',
             price:'',
-            stateItem:''
+            stateItem:'',
+            youAdded:''
              
         }
     }
@@ -25,6 +26,7 @@ export default class AddItem extends Component {
         axios.post(`http://localhost:5000/AddItem?userName=${this.state.userName}`,{itemTitle,image,description,price,stateItem})
         .then(respons=>{
           console.log(respons.data)
+          this.setState({itemTitle:'',image:'',description:'',price:'',stateItem:'',youAdded:'You Added'})
         })
         .catch(error=>{
           console.log(error)
@@ -41,6 +43,7 @@ export default class AddItem extends Component {
             <div className="col-md-6 b">
               <div className="myLeftCtn add">
               <header>Add Item</header>
+              <h5>{this.state.youAdded}</h5>
                 <form
                   className="myForm text-center"
                   onSubmit={this.SubmitHandler}
