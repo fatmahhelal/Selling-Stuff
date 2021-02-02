@@ -18,10 +18,10 @@ export default class Card extends Component {
     this.getSeller()
 
   }
-  
-  handleNew=()=>{
-        this.props.handleItemInfo(this.props.item._id)
-        window.open('/ItemInfo')
+
+  handleNew = () => {
+    this.props.handleItemInfo(this.props.item._id)
+    window.open('/ItemInfo')
   }
 
   getSeller = () => {
@@ -54,7 +54,6 @@ export default class Card extends Component {
       })
   }
 
-
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("sellerName", JSON.stringify(this.state.sellerName));
@@ -86,49 +85,12 @@ export default class Card extends Component {
                     <button type="button" class="btn btn-outline-success buttonCard">Contact</button>
                   </a>
 
-
-
-
-                  {/* <Route exact path='/ItemInfo/:id' component={(props) => {
-                return (
-                  <ItemInfo
-                    itemId={this.props.item._id}
-                  />
-                );
-              }} /> */}
-
                 </div>
               </div>
             </div>
           </div>
-
-          </div>
-
-
-
         </div>
-
-      </Router>
-
-
+      </Router >
     )
   }
-
 }
-
-}
-
-
-// {/* <Link to={`/ItemInfo/:${this.props.item._id}`}>
-//                     <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
-//                   </Link>
-//                   <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button> */}
-
-              //     {/* <Route exact path='/ItemInfo/:id' component={(props) => {
-              //   return (
-              //     <ItemInfo
-              //       itemId={this.props.item._id}
-              //     />
-              //   );
-              // }} /> */}
-

@@ -15,9 +15,6 @@ import SellerCard from "./components/SellerCard";
 
 import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
-import SellerCard from './components/SellerCard'
-
-=======
 import AddItem from './components/AddItem'
 
 
@@ -30,8 +27,10 @@ class App extends React.Component {
       Item: [],
       searchResultArray: [],
       searchWord: "",
-
       userStatus: false,
+
+      ItemId: ""
+
       ItemId: "",
 
 
@@ -39,6 +38,7 @@ class App extends React.Component {
 
       userStatus: false, 
       ItemId:""
+
 
 
     };
@@ -58,12 +58,9 @@ class App extends React.Component {
   }
 
 
-  
-
   handleItemInfo = (id) => {
     this.setState({ ItemId: id });
   };
-
 
   searchResult = () => {
     var search = this.state.searchWord;
@@ -139,10 +136,7 @@ class App extends React.Component {
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
- cardBut
     localStorage.setItem("userStatus", JSON.stringify(this.state.userStatus));
-
-
     localStorage.setItem(
       "searchResultArray",
       JSON.stringify(this.state.searchResultArray)
@@ -151,6 +145,9 @@ class App extends React.Component {
 
   render() {
     const links = [
+
+
+      { to: '/', title: 'Home' },
 
       {to: '/', title: 'Home'},
 
@@ -166,6 +163,7 @@ class App extends React.Component {
     ];
 
 
+
       { to: '/Favorite', title: 'Favorite' },
       { to: '/NewSeller', title: 'Sign up' },
       { to: '/OldUser', title: 'Sign In' },
@@ -173,6 +171,9 @@ class App extends React.Component {
 
 
     const Login = [
+
+      { to: '/', title: 'Home' },
+
 
       {to: '/', title: 'Home'},
 
@@ -186,6 +187,7 @@ class App extends React.Component {
       { to: "/OldUser", title: "Personal" },
       //{ to: '/OldUser', title: 'Sign out' },
     ];
+
 
 
       { to: '/Favorite', title: 'Favorite' },
@@ -248,6 +250,8 @@ class App extends React.Component {
 
 
 
+
+
     if (!this.state.userStatus) {
       return (
         <div className="App">
@@ -294,14 +298,8 @@ class App extends React.Component {
                 );
 
                 return <Home
-
-                  ItemState={this.state.Item} getFav={this.getFav}
-
-                  // {...props}
-                  // {...homeProps}
                   ItemState={this.state.Item} getFav={this.getFav}
                   handleItemInfo={this.handleItemInfo}
-
                 />;
 
               }}
@@ -324,6 +322,8 @@ class App extends React.Component {
 
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
+
+
 
             {/* <Route exact path="/AddItem" component={AddItem}></Route> */}
             <Route
@@ -350,8 +350,6 @@ class App extends React.Component {
               );
             }}
             />
-            <Route exact path='/ItemInfo/:id' component={ItemInfo} />
-
             <Route exact path="/AddItem" component={AddItem}></Route>
             <Route exact path="/OldUser" component={(props) => {
               return (
@@ -361,15 +359,15 @@ class App extends React.Component {
               );
             }}
             />
-                  <Route exact path='/ItemInfo/:id'
-                  component={(props) => {
-              return (
-                <ItemInfo
-                  itemId={this.state.ItemId}
-                />
-              );
-            }} />
-            
+            <Route exact path='/ItemInfo/:id'
+              component={(props) => {
+                return (
+                  <ItemInfo
+                    itemId={this.state.ItemId}
+                  />
+                );
+              }} />
+
 
 
             <Route
@@ -445,13 +443,7 @@ class App extends React.Component {
                 return <Home
 
                   ItemState={this.state.Item} getFav={this.getFav}
-
-
-                  // {...props}
-                  // {...homeProps}
-                  ItemState={this.state.Item} getFav={this.getFav}
                   handleItemInfo={this.state.handleItemInfo}
-                  
 
                 />;
 

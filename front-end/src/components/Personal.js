@@ -33,8 +33,8 @@
 //             </Link>
 //           </div>
 //         </main>
-        
-        
+
+
 //         <Route exact path="/OldUser" component={OldUser}></Route>
 //         {/* <Route exact path="/NewSeller" component={NewSeller}></Route> */}
 //       </Router>

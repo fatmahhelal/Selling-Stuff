@@ -7,18 +7,14 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 export default class OldUser extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       sellerName: "",
       password: "",
       sellerId: "",
       sellerItem: [],
-
       login: false,
       name: ""
-
-      login: false, 
-      name:""
-
 
     };
   }
@@ -39,13 +35,9 @@ export default class OldUser extends Component {
       });
   };
 
-  componentWillUpdate() {
-    // localStorage Favorite item array so we don't need to stor in db
-    localStorage.setItem("Item", JSON.stringify(this.state.sellerItem));
-    localStorage.setItem("sellerId", JSON.stringify(this.state.sellerId)
-    );
-  }
-
+  // componentDidMount = () => {
+  //   this.getsellerItem();
+  // };
 
 
 
@@ -76,7 +68,7 @@ export default class OldUser extends Component {
                       type="text"
                       placeholder=" enter your username"
                       name="userName"
-
+                      // value={userName}
                       onChange={(e) => {
                         this.setState({ sellerName: e.target.value });
                       }}
@@ -119,45 +111,106 @@ export default class OldUser extends Component {
           </div>
         </div>
       </div>
-
-  
-
+        {/* <Route
+              exact
+              path="/SellerInfo"
+              component={(props) => {
+                return <SellerInfo Item={this.state.sellerItem} />;
+              }}
+            ></Route> */}
       </Router>
       )
     }
     else {
       return (
-
         <Router>
           <Switch>
             <Route exact
               path="/SellerInfo"
               component={(props) => {
-
                 return <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
               }}
             ></Route>
 
           </Switch>
         </Router>
+
 
       )
     }
+    //     return (
+    //       // <Router>
+
+
+    // {/* <div className="container">
+    //         <div className="myCard">
+    //           <div className="row">
+    //             <div className="col-md-6 b">
+    //               <div className="myLeftCtn">
+    //               <header>{this.state.welcomeText}</header>
+    //                 <form
+    //                   className="myForm text-center"
+    //                   onSubmit={this.SubmitHandler}
+    //                 >
+
+    //                   <div className="form-group">
+    //                     <i className="fa fa-user"></i>
+    //                     <input
+    //                       className="myInput"
+    //                       type="text"
+    //                       placeholder=" enter your username"
+    //                       name="userName"
+    //                       // value={userName}
+    //                       onChange={(e) => {
+    //                         this.setState({ sellerName: e.target.value });
+    //                       }}
+    //                       required
+    //                     />
+    //                   </div>
+    //                   <br></br>
+    //                   <div className="form-group">
+    //                     <i className="fa fa-key"></i>
+    //                     <input
+    //                       className="myInput"
+    //                       type="password"
+    //                       placeholder="enter your password"
+    //                       name="password"
+    //                       onChange={(e) => {
+    //                         this.setState({ password: e.target.value });
+    //                       }}
+    //                     />
+    //                   </div>
+    //                   <br></br>
+
+    //                   <div class="p-t-10">
+    //                   <Link to="/SellerInfo">
+    //                     <button className="form-group btn" type="submit" type="submit" onClick={this.getsellerInfo}>
+    //                       sign in
+    //                     </button>
+    //                     </Link>
+    //                   </div>
+    //                 </form>
+    //               </div>
+    //             </div>
+    //             <div className="col-md-6 c">
+    //               <div className=" myRightCtn">
+    //                 <div className="box">
+    //                   <header>Welcome back</header>
+
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       // </div> */}
+    //       // {/* <Route
+    //       //         exact
+    //       //         path="/SellerInfo"
+    //       //         component={(props) => {
+    //       //           return <SellerInfo Item={this.state.sellerItem} />;
+    //       //         }}
+    //       //       ></Route>
+    //       // </Router> */}
+    //     );
   }
 }
-
-
-                return <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
-              }}
-            ></Route>
-
-          </Switch>
-        </Router>
-
-
-
-
-      )
-     }
-    }}
-   
