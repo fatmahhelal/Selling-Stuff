@@ -27,8 +27,16 @@ export default class SellerInfo extends Component {
 
     super(props);
 
+
+export default class SellerInfo extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       sellerItem: [],
+
+    this.state = {
+      sellerItem: [],
+
 
     };
   }
@@ -49,8 +57,12 @@ export default class SellerInfo extends Component {
       });
   };
 
+  deleteAll = () => {
+
+
   
   deleteAll =()=>{
+
 
     axios
       .delete(
@@ -75,6 +87,12 @@ export default class SellerInfo extends Component {
       <h1>Hello, {this.props.sellerName}</h1>
       <h1>Your Items List</h1>
       <button class="btn btn-danger btnMore" onClick={this.deleteAll}>Delete All</button>
+
+      <button class="btn btn-primary btnMore">Add New Item</button>
+      <SellerDesh sellerItem={this.state.sellerItem} /></div>;
+  }
+}
+
       <button class="btn btn-primary btnMore"onClick={this.openAddItem}>Add New Item</button>
       <SellerDesh sellerItem={this.state.sellerItem} /></div>;
   }
@@ -82,6 +100,7 @@ export default class SellerInfo extends Component {
 
     
     
+
 
 
 

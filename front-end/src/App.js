@@ -7,10 +7,20 @@ import Favorite from "./components/Favorite";
 import ItemInfo from "./components/ItemInfo";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
+
 import NewSeller from "./components/NewSeller";
 import OldUser from "./components/OldUser";
 import SellerCard from "./components/SellerCard";
 // import AddItem from './components/AddItem'
+
+import NewSeller from './components/NewSeller'
+import OldUser from './components/OldUser'
+import SellerCard from './components/SellerCard'
+
+=======
+import AddItem from './components/AddItem'
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -20,8 +30,17 @@ class App extends React.Component {
       Item: [],
       searchResultArray: [],
       searchWord: "",
+
       userStatus: false,
       ItemId: "",
+
+
+      userStatus: false,
+
+      userStatus: false, 
+      ItemId:""
+
+
     };
   }
 
@@ -30,12 +49,21 @@ class App extends React.Component {
   };
 
   handleLogin = () => {
+
     this.setState({ userStatus: !this.state.userStatus });
   };
+
+
+    this.setState({ userStatus: !this.state.userStatus })
+  }
+
+
+  
 
   handleItemInfo = (id) => {
     this.setState({ ItemId: id });
   };
+
 
   searchResult = () => {
     var search = this.state.searchWord;
@@ -111,6 +139,10 @@ class App extends React.Component {
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
+ cardBut
+    localStorage.setItem("userStatus", JSON.stringify(this.state.userStatus));
+
+
     localStorage.setItem(
       "searchResultArray",
       JSON.stringify(this.state.searchResultArray)
@@ -119,26 +151,49 @@ class App extends React.Component {
 
   render() {
     const links = [
+
+      {to: '/', title: 'Home'},
+
       {
         to: "/",
         title: "Home",
         homeProps: { ItemState: this.state.Item, getFav: this.getFav },
       },
+
       { to: "/Favorite", title: "Favorite" },
       { to: "/NewSeller", title: "Sign up" },
       { to: "/OldUser", title: "Sign In" },
     ];
 
+
+      { to: '/Favorite', title: 'Favorite' },
+      { to: '/NewSeller', title: 'Sign up' },
+      { to: '/OldUser', title: 'Sign In' },
+    ]
+
+
     const Login = [
+
+      {to: '/', title: 'Home'},
+
       {
         to: "/",
         title: "Home",
         homeProps: { ItemState: this.state.Item, getFav: this.getFav },
       },
+
       { to: "/Favorite", title: "Favorite" },
       { to: "/OldUser", title: "Personal" },
       //{ to: '/OldUser', title: 'Sign out' },
     ];
+
+
+      { to: '/Favorite', title: 'Favorite' },
+      { to: '/OldUser', title: 'Personal' },
+      // { to: '/OldUser', title: 'Sign out' },
+
+    ]
+
 
     const bar = [
       <div>
@@ -182,8 +237,16 @@ class App extends React.Component {
             Search
           </button>
         </Link>
+
       </form>,
     ];
+
+      </form>
+    ]
+
+
+
+
 
     if (!this.state.userStatus) {
       return (
@@ -219,6 +282,7 @@ class App extends React.Component {
               exact
               path="/"
               component={(props) => {
+
                 return (
                   <Home
                     // {...props}
@@ -228,6 +292,18 @@ class App extends React.Component {
                     handleItemInfo={this.handleItemInfo}
                   />
                 );
+
+                return <Home
+
+                  ItemState={this.state.Item} getFav={this.getFav}
+
+                  // {...props}
+                  // {...homeProps}
+                  ItemState={this.state.Item} getFav={this.getFav}
+                  handleItemInfo={this.handleItemInfo}
+
+                />;
+
               }}
             />
 
@@ -248,6 +324,7 @@ class App extends React.Component {
 
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
+
             {/* <Route exact path="/AddItem" component={AddItem}></Route> */}
             <Route
               exact
@@ -263,6 +340,37 @@ class App extends React.Component {
                 return <ItemInfo itemId={this.state.ItemId} />;
               }}
             />
+
+
+            <Route exact path="/OldUser" component={(props) => {
+              return (
+                <OldUser
+                  handleLogin={this.handleLogin}
+                />
+              );
+            }}
+            />
+            <Route exact path='/ItemInfo/:id' component={ItemInfo} />
+
+            <Route exact path="/AddItem" component={AddItem}></Route>
+            <Route exact path="/OldUser" component={(props) => {
+              return (
+                <OldUser
+                  handleLogin={this.handleLogin}
+                />
+              );
+            }}
+            />
+                  <Route exact path='/ItemInfo/:id'
+                  component={(props) => {
+              return (
+                <ItemInfo
+                  itemId={this.state.ItemId}
+                />
+              );
+            }} />
+            
+
 
             <Route
               path="/Search"
@@ -323,6 +431,7 @@ class App extends React.Component {
               exact
               path="/"
               component={(props) => {
+
                 return (
                   <Home
                     // {...props}
@@ -332,6 +441,20 @@ class App extends React.Component {
                     handleItemInfo={this.state.handleItemInfo}
                   />
                 );
+
+                return <Home
+
+                  ItemState={this.state.Item} getFav={this.getFav}
+
+
+                  // {...props}
+                  // {...homeProps}
+                  ItemState={this.state.Item} getFav={this.getFav}
+                  handleItemInfo={this.state.handleItemInfo}
+                  
+
+                />;
+
               }}
             />
 
@@ -353,7 +476,15 @@ class App extends React.Component {
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
             <Route exact path="/OldUser" component={OldUser}></Route>
+
             {/* <Route exact path="/AddItem" component={AddItem}></Route> */}
+
+
+            <Route exact path='/ItemInfo/:id' component={ItemInfo} />
+
+            <Route exact path="/AddItem" component={AddItem}></Route>
+
+
 
             <Route
               path="/Search"

@@ -7,15 +7,12 @@ import ItemInfo from './ItemInfo'
 export default class Card extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
-
       Item: [],
       sellerName: "",
       sellerContact: "",
     }
   }
-
 
   componentDidMount() {
     this.getSeller()
@@ -26,6 +23,7 @@ export default class Card extends Component {
         this.props.handleItemInfo(this.props.item._id)
         window.open('/ItemInfo')
   }
+
   getSeller = () => {
     const sellerId = this.props.item.sellerId
     axios
@@ -44,6 +42,7 @@ export default class Card extends Component {
       });
   }
 
+
   getItemInfor = () => {
     axios
       .get(`http://localhost:5000/OneItem?id=${this.props.item._id}`)
@@ -54,6 +53,7 @@ export default class Card extends Component {
 
       })
   }
+
 
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
@@ -82,7 +82,12 @@ export default class Card extends Component {
                   <Link to={`/ItemInfo/:${this.props.item._id}`}>
                     <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
                   </Link>
-                  <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button>
+                  <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
+                    <button type="button" class="btn btn-outline-success buttonCard">Contact</button>
+                  </a>
+
+
+
 
                   {/* <Route exact path='/ItemInfo/:id' component={(props) => {
                 return (
@@ -91,18 +96,26 @@ export default class Card extends Component {
                   />
                 );
               }} /> */}
+
                 </div>
               </div>
             </div>
           </div>
 
+          </div>
+
+
 
         </div>
+
       </Router>
 
 
     )
   }
+
+}
+
 }
 
 
@@ -118,3 +131,4 @@ export default class Card extends Component {
               //     />
               //   );
               // }} /> */}
+
