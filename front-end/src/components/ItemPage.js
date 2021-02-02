@@ -9,12 +9,12 @@ export default class ItemPage extends Component {
       itemInfo: [],
     }
   }
-  
+
   componentDidMount() {
     this.getItemInfor()
 
   }
-  
+
   getItemInfor = () => {
     axios
       .get(`http://localhost:5000/OneItem?id=${this.props.itemId}`)
@@ -28,7 +28,7 @@ export default class ItemPage extends Component {
   render() {
     return (
       <div>
-          <div className="boot">
+        <div className="boot">
           <div class="myCard cardInfo boot">
             <img src={this.state.itemInfo.image} width='500px' height='500px'></img>
             <div class="card-body">
@@ -38,7 +38,6 @@ export default class ItemPage extends Component {
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
                   <button type="button" class="btn btn-outline-success buttonCard">{this.state.itemInfo.cotactInfo}</button>
-
 
                 </div>
               </div>

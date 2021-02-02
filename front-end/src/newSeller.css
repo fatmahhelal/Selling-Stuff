@@ -81,7 +81,7 @@
 .myRightCtn header {
   color: rgb(10, 10, 10);
   font-size: 44px;
-  margin-top: -80px;
+  /* margin-top: -80px; */
 }
 
 .box {

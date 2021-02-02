@@ -137,7 +137,7 @@ router.get("/oneSeller", (req, res) => {
 
 router.get("/oneSellerpas", (req, res) => {
   console.log("You Item List");
-  Seller.find({ userName: req.query.userName, password: req.query.password}, (err, foundUser) => {
+  Seller.find({ userName: req.query.userName, password: req.query.password }, (err, foundUser) => {
     console.log("FOUND USER: ", foundUser);
     if (err) {
       console.log("ERR: ", err);

@@ -12,19 +12,15 @@ export default class Home extends Component {
           removeFav={this.props.removeFav}
           getFav={this.props.getFav}
           AddItemToArray={this.props.AddItemToArray}
-          handleItemInfo={this.props.handleItemInfo}
-
         />
-        
-        // console.log('test',Item)
-       
+
       );
     });
     return (
 
       <div><h1 className='wel'>Welcome to the world of selling</h1>
-    <div className="topHeader boot">{ItemCard}</div>
-    </div>);
+        <div className="topHeader boot">{ItemCard}</div>
+      </div>);
   }
 
 }

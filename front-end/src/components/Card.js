@@ -21,10 +21,10 @@ export default class Card extends Component {
     this.getSeller()
 
   }
-  
-  handleNew=()=>{
-        this.props.handleItemInfo(this.props.item._id)
-        window.open('/ItemInfo')
+
+  handleNew = () => {
+    this.props.handleItemInfo(this.props.item._id)
+    window.open('/ItemInfo')
   }
   getSeller = () => {
     const sellerId = this.props.item.sellerId
@@ -82,39 +82,16 @@ export default class Card extends Component {
                   <Link to={`/ItemInfo/:${this.props.item._id}`}>
                     <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
                   </Link>
-                  <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button>
+                  <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
+                    <button type="button" class="btn btn-outline-success buttonCard">Contact</button>
+                  </a>
 
-                  {/* <Route exact path='/ItemInfo/:id' component={(props) => {
-                return (
-                  <ItemInfo
-                    itemId={this.props.item._id}
-                  />
-                );
-              }} /> */}
                 </div>
               </div>
             </div>
           </div>
-
-
         </div>
-      </Router>
-
-
+      </Router >
     )
   }
 }
-
-
-// {/* <Link to={`/ItemInfo/:${this.props.item._id}`}>
-//                     <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
-//                   </Link>
-//                   <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button> */}
-
-              //     {/* <Route exact path='/ItemInfo/:id' component={(props) => {
-              //   return (
-              //     <ItemInfo
-              //       itemId={this.props.item._id}
-              //     />
-              //   );
-              // }} /> */}

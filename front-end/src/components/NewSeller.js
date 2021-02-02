@@ -10,8 +10,8 @@ export default class NewSeller extends Component {
       userName: "",
       name: "",
       cotactInfo: "",
-      password:"",
-      welcomeText:""
+      password: "",
+      welcomeText: ""
     };
   }
   ChangHandler = (e) => {
@@ -29,24 +29,24 @@ export default class NewSeller extends Component {
       .catch((error) => {
         console.log(error);
       });
-    this.setState({ userName: "",name: "", cotactInfo: "",password: "",welcomeText:"You have account now"});
-    
+    this.setState({ userName: "", name: "", cotactInfo: "", password: "", welcomeText: "You have account now" });
+
   };
 
   render() {
-    const { userName, name, cotactInfo ,password} = this.state;
+    const { userName, name, cotactInfo, password } = this.state;
     return (
       <div className="container">
         <div className="myCard">
           <div className="row">
             <div className="col-md-6 b">
               <div className="myLeftCtn">
-              <header>{this.state.welcomeText}</header>
+                <header>{this.state.welcomeText}</header>
                 <form
                   className="myForm text-center"
                   onSubmit={this.SubmitHandler}
                 >
-                  
+
                   <div className="form-group">
                     <i className="fa fa-user"></i>
                     <input
