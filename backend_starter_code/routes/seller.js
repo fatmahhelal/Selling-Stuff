@@ -15,7 +15,7 @@ router.use(express.json());
 //  * Description: Get all the seller
 //  */
 
-router.get("/allSeller", (req, res) => {
+router.get("/allSeller", (req, res) => { 
   console.log("POST /users");
   Seller.find({}, (err, newUser) => {
     if (err) {
@@ -33,6 +33,7 @@ router.get("/allSeller", (req, res) => {
 //  * URI:         /
 //  * Description: Get all item
 //  */
+
 router.get("/allItem", (req, res) => {
   console.log("POST /users");
   Item.find({}, (err, newUser) => {
@@ -44,6 +45,13 @@ router.get("/allItem", (req, res) => {
     }
   });
 });
+
+// /**
+//  * Action:      INDEX
+//  * Method:      GET
+//  * URI:         /
+//  * Description: print all user Item
+//  */
 
 
 router.get("/SellerItem", (req, res) => {
@@ -82,6 +90,8 @@ router.get("/OneItem", (req, res) => {
 //  * URI:         /
 //  * Description: Get one item by name
 //  */
+
+
 
 router.get("/oneItemByname", (req, res) => {
   console.log("You Item List");
@@ -176,7 +186,12 @@ router.post("/addUser", (req, res) => {
 });
 
 
-
+/**
+ * Action:      INDEX
+ * Method:      get
+ * URI:         /
+ * Description: print Seller Item
+ */
 
 router.get("/SellerItem", (req, res) => {
   console.log("POST /users");
