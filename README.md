@@ -22,6 +22,7 @@ Started the app by designing its layout framework by <a href= 'https://app.diagr
 * Reacte js
 * mongoose
 * Postman 
+* Asana 
 
 ### :sunglasses: User Stories
 * As a user, I should be able to see all items
@@ -35,8 +36,9 @@ Started the app by designing its layout framework by <a href= 'https://app.diagr
 * As a user (seller), I should be able to update the item information
 * As a user (seller), I should be able to add a new item to my list
 
-
 ## :mag: App Preview
+
+
 
 ### :computer: The Web Application
 - The Home Page:
@@ -48,6 +50,10 @@ Shows a list of valuable items that user can view more details about an item or 
 
 Will display a list of the user favorite places have added there before with its information. And can delete the list or remove one of it.
 
+- Personal Page:
+- sign up page:
+- sign in page:
+
 
 ### :iphone: Phone Web Page
 The web app also has a responsive design.
@@ -57,9 +63,11 @@ The web app also has a responsive design.
 
 ### :link: Links
 * Live - <a href='#'/> Places Finder </a>
-* Github - <a href='#'> Here </a>
+* Github - <a href='https://git.generalassemb.ly/ghaidaakhalil/Project-3'> Here </a>
 
 ### :sparkles:Future Features:
 - Add Comment on item
 - Rating item
 - Filter item by status or price
+- Add new item
+- Contact by email

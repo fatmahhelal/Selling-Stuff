@@ -9,12 +9,12 @@ export default class ItemPage extends Component {
       itemInfo: [],
     }
   }
-
+  
   componentDidMount() {
     this.getItemInfor()
 
   }
-
+  
   getItemInfor = () => {
     axios
       .get(`http://localhost:5000/OneItem?id=${this.props.itemId}`)

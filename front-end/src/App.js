@@ -112,7 +112,6 @@ class App extends React.Component {
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("favArray", JSON.stringify(this.state.favArray));
-    localStorage.setItem("userStatus", JSON.stringify(this.state.userStatus));
     localStorage.setItem(
       "searchResultArray",
       JSON.stringify(this.state.searchResultArray)
@@ -121,22 +120,20 @@ class App extends React.Component {
 
   render() {
     const links = [
-      // {
-      //   to: '/', title: 'Home',
-      //   homeProps: { ItemState: this.state.Item, getFav: this.getFav }
-      // },
-      {to: '/', title: 'Home'},
+      {
+        to: '/', title: 'Home',
+        homeProps: { ItemState: this.state.Item, getFav: this.getFav }
+      },
       { to: '/Favorite', title: 'Favorite' },
       { to: '/NewSeller', title: 'Sign up' },
       { to: '/OldUser', title: 'Sign In' },
     ]
 
     const Login = [
-      // {
-      //   to: '/', title: 'Home',
-      //   homeProps: { ItemState: this.state.Item, getFav: this.getFav }
-      // },
-      {to: '/', title: 'Home'},
+      {
+        to: '/', title: 'Home',
+        homeProps: { ItemState: this.state.Item, getFav: this.getFav }
+      },
       { to: '/Favorite', title: 'Favorite' },
       { to: '/OldUser', title: 'Personal' },
       // { to: '/OldUser', title: 'Sign out' },
@@ -218,7 +215,7 @@ class App extends React.Component {
                   // {...props}
                   // {...homeProps}
                   ItemState={this.state.Item} getFav={this.getFav}
-                  // handleItemInfo={this.handleItemInfo}
+                  handleItemInfo={this.handleItemInfo}
                 />;
               }}
             />
@@ -238,7 +235,7 @@ class App extends React.Component {
               }}
             />
 
-          
+            {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
             <Route exact path="/AddItem" component={AddItem}></Route>
             <Route exact path="/OldUser" component={(props) => {
@@ -249,15 +246,14 @@ class App extends React.Component {
               );
             }}
             />
-                  {/* <Route exact path='/ItemInfo/:id'
+                  <Route exact path='/ItemInfo/:id'
                   component={(props) => {
               return (
                 <ItemInfo
                   itemId={this.state.ItemId}
                 />
               );
-            }} /> */}
-             <Route exact path='/ItemInfo/:id' component={ItemInfo} />
+            }} />
             
             <Route
               path="/Search"
@@ -308,9 +304,10 @@ class App extends React.Component {
               path="/"
               component={(props) => {
                 return <Home
-               
+                  // {...props}
+                  // {...homeProps}
                   ItemState={this.state.Item} getFav={this.getFav}
-                  // handleItemInfo={this.state.handleItemInfo}
+                  handleItemInfo={this.state.handleItemInfo}
                   
                 />;
               }}
@@ -331,11 +328,10 @@ class App extends React.Component {
               }}
             />
 
-            
+            {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
             <Route exact path="/OldUser" component={OldUser}></Route>
             <Route exact path="/AddItem" component={AddItem}></Route>
-            <Route exact path='/ItemInfo/:id' component={ItemInfo} />
 
             <Route
               path="/Search"
