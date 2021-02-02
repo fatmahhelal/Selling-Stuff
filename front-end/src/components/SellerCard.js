@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 export default class SellerCard extends Component {
   //function delete item end point delete
   //item id will be {this.props.item._id}
-  deleteItem =()=>{
+  deleteItem =(e)=>{
+    e.preventDefault()
     
     axios
       .delete(`http://localhost:5000/itemDelete?id=${this.props.item._id}`)

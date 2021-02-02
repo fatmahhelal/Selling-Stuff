@@ -27,6 +27,9 @@ Started the app by designing its layout framework by <a href= 'https://app.diagr
 * As a user, I should be able to see all items
 * As a user, I should be able to search for an item
 * As a user, I should be able to add any item to my favorite list
+* As a user, I should be able to contact with the seller
+* As a user (seller), I should be able to sign up
+* As a user (seller), I should be able to sign in
 * As a user (seller), I should be able to see my item list
 * As a user (seller), I should be able to delete the item
 * As a user (seller), I should be able to update the item information
@@ -57,7 +60,6 @@ The web app also has a responsive design.
 * Github - <a href='#'> Here </a>
 
 ### :sparkles:Future Features:
-- Register and Login User
 - Add Comment on item
 - Rating item
 - Filter item by status or price

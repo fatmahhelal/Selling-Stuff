@@ -20,7 +20,9 @@ Started the app by designing its layout framework by <a href= 'https://app.diagr
 * JavaScript (ES6)
 * Bootstrap
 * Reacte js
+* Express 
 * mongoose
+* MongoDB compass
 * Postman 
 
 ### :sunglasses: User Stories
