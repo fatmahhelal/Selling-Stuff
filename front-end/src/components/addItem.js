@@ -26,7 +26,7 @@ export default class AddItem extends Component {
         axios.post(`http://localhost:5000/AddItem?userName=${this.state.userName}`,{itemTitle,image,description,price,stateItem})
         .then(respons=>{
           console.log(respons.data)
-          this.setState({itemTitle:'',image:'',description:'',price:'',stateItem:'',youAdded:'You Added'})
+          this.setState({itemTitle:'',image:'',description:'',price:'',stateItem:'',userName:'',youAdded:'You Added'})
         })
         .catch(error=>{
           console.log(error)

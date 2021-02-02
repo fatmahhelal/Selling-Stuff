@@ -1,48 +1,44 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Fav from './Fav'
+import Fav from "./Fav";
 import axios from "axios";
-import ItemInfo from './ItemInfo'
+import ItemInfo from "./ItemInfo";
 
 export default class Card extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-
       Item: [],
       sellerName: "",
       sellerContact: "",
-    }
+    };
   }
-
 
   componentDidMount() {
-    this.getSeller()
+    this.getSeller();
+  }
 
-  }
-  
-  handleNew=()=>{
-        this.props.handleItemInfo(this.props.item._id)
-        window.open('/ItemInfo')
-  }
+  handleNew = () => {
+    this.props.handleItemInfo(this.props.item._id);
+    window.open("/ItemInfo");
+  };
   getSeller = () => {
-    const sellerId = this.props.item.sellerId
+    const sellerId = this.props.item.sellerId;
     axios
       .get(`http://localhost:5000/oneSellerId?id=${sellerId}`)
       .then((response) => {
         this.setState({
           sellerName: response.data.name,
-          sellerContact: response.data.cotactInfo
+          sellerContact: response.data.cotactInfo,
+        });
 
-        })
-
-        console.log(response.data)
+        console.log(response.data);
       })
       .catch((err) => {
-        console.log('ERR: ', err);
+        console.log("ERR: ", err);
       });
-  }
+  };
 
   getItemInfor = () => {
     axios
@@ -51,28 +47,29 @@ export default class Card extends Component {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
         this.setState({ Item: response.data });
-
-      })
-  }
+      });
+  };
 
   componentWillUpdate() {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("sellerName", JSON.stringify(this.state.sellerName));
-    localStorage.setItem("sellerContact", JSON.stringify(this.state.sellerContact));
-    // localStorage.setItem("itemId", JSON.stringify(this.props.item._id));
+    localStorage.setItem(
+      "sellerContact",
+      JSON.stringify(this.state.sellerContact)
+    );
   }
   render() {
-
     return (
       <Router>
         <div className="boot">
           <div class="card">
-            <img src={this.props.item.image} width='300px' height='300px'></img>
+            <img src={this.props.item.image} width="300px" height="300px"></img>
             <div class="card-body">
               <Fav
                 getFav={this.props.getFav}
                 removeFav={this.props.removeFav}
-                item={this.props.item} />
+                item={this.props.item}
+              />
               <h3 class="card-text">{this.props.item.itemTitle}</h3>
               <p class="card-text">{this.props.item.description}</p>
               <p class="card-text priceCon">{this.props.item.price} .SR </p>
@@ -80,41 +77,30 @@ export default class Card extends Component {
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
                   <Link to={`/ItemInfo/:${this.props.item._id}`}>
-                    <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-success buttonCard"
+                      onClick="window.open('/ItemInfo')"
+                    >
+                      More
+                    </button>
                   </Link>
-                  <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button>
-
-                  {/* <Route exact path='/ItemInfo/:id' component={(props) => {
-                return (
-                  <ItemInfo
-                    itemId={this.props.item._id}
-                  />
-                );
-              }} /> */}
+                  {/* <button
+                    type="button"
+                    class="btn btn-outline-success buttonCard"
+                    onClick={this.state.sellerContact}
+                  >
+                    Contact
+                  </button> */}
+                          <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
+                    <button type="button" class="btn btn-outline-success buttonCard">Contact</button>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
-
-
         </div>
       </Router>
-
-
-    )
+    );
   }
 }
-
-
-// {/* <Link to={`/ItemInfo/:${this.props.item._id}`}>
-//                     <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
-//                   </Link>
-//                   <button type="button" class="btn btn-outline-success buttonCard" onClick={this.state.sellerContact} >Contact</button> */}
-
-              //     {/* <Route exact path='/ItemInfo/:id' component={(props) => {
-              //   return (
-              //     <ItemInfo
-              //       itemId={this.props.item._id}
-              //     />
-              //   );
-              // }} /> */}

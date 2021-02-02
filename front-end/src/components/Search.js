@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import Card from "./Card"
+import React, { Component } from "react";
+import Card from "./Card";
 
 export default class Search extends Component {
   render() {
@@ -16,4 +16,3 @@ export default class Search extends Component {
     return <div className="topHeader boot">{ItemCard}</div>;
   }
 }
-
