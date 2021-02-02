@@ -4,14 +4,13 @@ import "./App.css";
 import Home from "./components/Home";
 import Favorite from "./components/Favorite";
 // import Personal from "./components/Personal";
-import ItemInfo from './components/ItemInfo';
+import ItemInfo from "./components/ItemInfo";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
-import NewSeller from './components/NewSeller'
-import OldUser from './components/OldUser'
-import SellerCard from './components/SellerCard'
-import AddItem from './components/AddItem'
-
+import NewSeller from "./components/NewSeller";
+import OldUser from "./components/OldUser";
+import SellerCard from "./components/SellerCard";
+// import AddItem from './components/AddItem'
 
 class App extends React.Component {
   constructor(props) {
@@ -21,8 +20,8 @@ class App extends React.Component {
       Item: [],
       searchResultArray: [],
       searchWord: "",
-      userStatus: false, 
-      ItemId:""
+      userStatus: false,
+      ItemId: "",
     };
   }
 
@@ -31,12 +30,12 @@ class App extends React.Component {
   };
 
   handleLogin = () => {
-    this.setState({ userStatus: !this.state.userStatus })
-  }
-  
+    this.setState({ userStatus: !this.state.userStatus });
+  };
+
   handleItemInfo = (id) => {
-    this.setState({ ItemId: id })
-  }
+    this.setState({ ItemId: id });
+  };
 
   searchResult = () => {
     var search = this.state.searchWord;
@@ -121,28 +120,31 @@ class App extends React.Component {
   render() {
     const links = [
       {
-        to: '/', title: 'Home',
-        homeProps: { ItemState: this.state.Item, getFav: this.getFav }
+        to: "/",
+        title: "Home",
+        homeProps: { ItemState: this.state.Item, getFav: this.getFav },
       },
-      { to: '/Favorite', title: 'Favorite' },
-      { to: '/NewSeller', title: 'Sign up' },
-      { to: '/OldUser', title: 'Sign In' },
-    ]
+      { to: "/Favorite", title: "Favorite" },
+      { to: "/NewSeller", title: "Sign up" },
+      { to: "/OldUser", title: "Sign In" },
+    ];
 
     const Login = [
       {
-        to: '/', title: 'Home',
-        homeProps: { ItemState: this.state.Item, getFav: this.getFav }
+        to: "/",
+        title: "Home",
+        homeProps: { ItemState: this.state.Item, getFav: this.getFav },
       },
-      { to: '/Favorite', title: 'Favorite' },
-      { to: '/OldUser', title: 'Personal' },
-      // { to: '/OldUser', title: 'Sign out' },
-
-    ]
+      { to: "/Favorite", title: "Favorite" },
+      { to: "/OldUser", title: "Personal" },
+      //{ to: '/OldUser', title: 'Sign out' },
+    ];
 
     const bar = [
       <div>
-        <a class="navbar-brand" href="#">Selling</a>
+        <a class="navbar-brand" href="#">
+          Selling
+        </a>
         <button
           class="navbar-toggler"
           type="button"
@@ -150,11 +152,12 @@ class App extends React.Component {
           data-bs-target="#navbarsExampleDefault"
           aria-controls="navbarsExampleDefault"
           aria-expanded="false"
-          aria-label="Toggle navigation">
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-    ]
+      </div>,
+    ];
 
     const search = [
       <form class="d-flex" action="./Search">
@@ -174,11 +177,14 @@ class App extends React.Component {
             class="btn btn-outline-success"
             type="button"
             onClick={this.searchResult}
-          > Search</button>
+          >
+            {" "}
+            Search
+          </button>
         </Link>
-      </form>
-    ]
-    
+      </form>,
+    ];
+
     if (!this.state.userStatus) {
       return (
         <div className="App">
@@ -186,9 +192,11 @@ class App extends React.Component {
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
               <div class="container-fluid">
                 {bar}
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarsExampleDefault"
+                >
                   <ul class="navbar-nav me-auto mb-2 mb-md-0">
-
                     {links.map((one, index) => (
                       <li class="nav-item">
                         <Link
@@ -211,12 +219,15 @@ class App extends React.Component {
               exact
               path="/"
               component={(props) => {
-                return <Home
-                  // {...props}
-                  // {...homeProps}
-                  ItemState={this.state.Item} getFav={this.getFav}
-                  handleItemInfo={this.handleItemInfo}
-                />;
+                return (
+                  <Home
+                    // {...props}
+                    // {...homeProps}
+                    ItemState={this.state.Item}
+                    getFav={this.getFav}
+                    handleItemInfo={this.handleItemInfo}
+                  />
+                );
               }}
             />
 
@@ -237,24 +248,22 @@ class App extends React.Component {
 
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
-            <Route exact path="/AddItem" component={AddItem}></Route>
-            <Route exact path="/OldUser" component={(props) => {
-              return (
-                <OldUser
-                  handleLogin={this.handleLogin}
-                />
-              );
-            }}
+            {/* <Route exact path="/AddItem" component={AddItem}></Route> */}
+            <Route
+              exact
+              path="/OldUser"
+              component={(props) => {
+                return <OldUser handleLogin={this.handleLogin} />;
+              }}
             />
-                  <Route exact path='/ItemInfo/:id'
-                  component={(props) => {
-              return (
-                <ItemInfo
-                  itemId={this.state.ItemId}
-                />
-              );
-            }} />
-            
+            <Route
+              exact
+              path="/ItemInfo/:id"
+              component={(props) => {
+                return <ItemInfo itemId={this.state.ItemId} />;
+              }}
+            />
+
             <Route
               path="/Search"
               render={(props) => {
@@ -277,10 +286,11 @@ class App extends React.Component {
               <div class="container-fluid">
                 {bar}
 
-
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarsExampleDefault"
+                >
                   <ul class="navbar-nav me-auto mb-2 mb-md-0">
-
                     {Login.map((one, index) => (
                       <li class="nav-item">
                         <Link
@@ -295,6 +305,16 @@ class App extends React.Component {
                     ))}
                   </ul>
                   {search}
+                  <Link to="/OldUser">
+                    <button
+                      class="btn btn-outline-danger"
+                      type="button"
+                      onClick={this.handleLogin}
+                    >
+                      {" "}
+                      SignOut
+                    </button>
+                  </Link>
                 </div>
               </div>
             </nav>
@@ -303,13 +323,15 @@ class App extends React.Component {
               exact
               path="/"
               component={(props) => {
-                return <Home
-                  // {...props}
-                  // {...homeProps}
-                  ItemState={this.state.Item} getFav={this.getFav}
-                  handleItemInfo={this.state.handleItemInfo}
-                  
-                />;
+                return (
+                  <Home
+                    // {...props}
+                    // {...homeProps}
+                    ItemState={this.state.Item}
+                    getFav={this.getFav}
+                    handleItemInfo={this.state.handleItemInfo}
+                  />
+                );
               }}
             />
 
@@ -331,7 +353,7 @@ class App extends React.Component {
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
             <Route exact path="/OldUser" component={OldUser}></Route>
-            <Route exact path="/AddItem" component={AddItem}></Route>
+            {/* <Route exact path="/AddItem" component={AddItem}></Route> */}
 
             <Route
               path="/Search"
@@ -348,7 +370,6 @@ class App extends React.Component {
         </div>
       );
     }
-
   }
 }
 
