@@ -15,7 +15,7 @@ router.use(express.json());
 //  * Description: Get all the seller
 //  */
 
-router.get("/allSeller", (req, res) => { 
+router.get("/allSeller", (req, res) => {
   console.log("POST /users");
   Seller.find({}, (err, newUser) => {
     if (err) {

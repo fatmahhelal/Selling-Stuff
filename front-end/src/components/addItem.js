@@ -4,7 +4,6 @@ import "../newSeller.css";
 export default class AddItem extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       userName: '',
       itemTitle: '',
@@ -13,7 +12,6 @@ export default class AddItem extends Component {
       price: '',
       stateItem: '',
       youAdded: ''
-
     }
   }
   ChangHandler = (e) => {
@@ -81,7 +79,6 @@ export default class AddItem extends Component {
                     name='image'
                     value={image}
                     onChange={this.ChangHandler}
-
                   />
                 </div>
                 <br></br>
@@ -129,7 +126,6 @@ export default class AddItem extends Component {
               </form>
             </div>
           </div>
-
         </div>
       </div>
     )

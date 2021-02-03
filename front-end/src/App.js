@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
 import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
-import AddItem from './components/addItem'
+import AddItem from './components/AddItem'
 
 
 class App extends React.Component {
@@ -21,13 +21,7 @@ class App extends React.Component {
       searchResultArray: [],
       searchWord: "",
       userStatus: false,
-
       ItemId: ""
-
-   
-
-
-
     };
   }
 
@@ -127,36 +121,18 @@ class App extends React.Component {
 
   render() {
     const links = [
-
-
       { to: '/', title: 'Home' },
-
-  
-
       { to: "/Favorite", title: "Favorite" },
       { to: "/NewSeller", title: "Sign up" },
       { to: "/OldUser", title: "Sign In" },
     ];
 
-
-
- 
-
     const Login = [
-
       { to: '/', title: 'Home' },
-
-
-   
       { to: "/Favorite", title: "Favorite" },
       { to: "/OldUser", title: "Personal" },
       //{ to: '/OldUser', title: 'Sign out' },
     ];
-
-
-
-    
-  
 
     const bar = [
       <div>
@@ -196,12 +172,6 @@ class App extends React.Component {
         </Link>
       </form>
     ]
-
-
-
-
-
-
 
     if (!this.state.userStatus) {
       return (
@@ -262,7 +232,7 @@ class App extends React.Component {
 
 
 
-            {/* <Route exact path="/AddItem" component={AddItem}></Route> */}
+            <Route exact path="/AddItem" component={AddItem}></Route>
             <Route
               exact
               path="/OldUser"
@@ -274,7 +244,7 @@ class App extends React.Component {
               exact
               path="/ItemInfo/:id"
               component={(props) => {
-                return <ItemInfo itemId={this.state.ItemId} />;
+                return <ItemInfo />;
               }}
             />
 
@@ -296,14 +266,6 @@ class App extends React.Component {
               );
             }}
             />
-            <Route exact path='/ItemInfo/:id'
-              component={(props) => {
-                return (
-                  <ItemInfo
-                    itemId={this.state.ItemId}
-                  />
-                );
-              }} />
 
 
 
@@ -359,7 +321,6 @@ class App extends React.Component {
 
                   ItemState={this.state.Item} getFav={this.getFav}
                   handleItemInfo={this.state.handleItemInfo}
-
                 />;
               }}
             />
@@ -395,6 +356,14 @@ class App extends React.Component {
                 );
               }}
             />
+            <Route
+              exact
+              path="/ItemInfo/:id"
+              component={(props) => {
+                return <ItemInfo />;
+              }}
+            />
+
           </Router>
         </div>
       );

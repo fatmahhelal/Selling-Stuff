@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import SellerDesh from './SellerDesh'
 import axios from "axios";
-import AddItem from "./addItem"
+import AddItem from "./AddItem"
 export default class SellerInfo extends Component {
   constructor(props) {
     super(props);
