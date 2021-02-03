@@ -53,10 +53,10 @@ mongoose.connection.once('open', () => {
 
 
 
-app.get('/', (req, res) => {
-  console.log('get /');
-  res.json('result');
-});
+// app.get('/', (req, res) => {
+//   console.log('get /');
+//   res.json('result');
+// });
 
 /*** Middleware ***/
 
