@@ -10,6 +10,7 @@ import Search from "./components/Search";
 import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
 import AddItem from './components/addItem'
+import SellerInfo from './components/SellerInfo'
 
 
 class App extends React.Component {
@@ -21,8 +22,21 @@ class App extends React.Component {
       searchResultArray: [],
       searchWord: "",
       userStatus: false,
-      ItemId: ""
+      ItemId: "",
+      loginSellerItem: [],
+      loginSellerName:"",
+      loginSellerId:""
     };
+  }
+  handleLogin = (loginSellerId, loginSellerName,) => {
+    this.setState({
+      userStatus: !this.state.userStatus,
+      loginSellerId: loginSellerId,
+      loginSellerName: loginSellerName
+    }, function () {
+      console.log("the Fav Array", this.state.loginSellerId);
+    });
+    console.log(loginSellerId);
   }
 
   componentDidMount = () => {
@@ -341,9 +355,18 @@ class App extends React.Component {
             />
 
             {/* <Route exact path="/Personal" component={Personal} /> */}
-            <Route exact path="/NewSeller" component={NewSeller}></Route>
+            {/* <Route exact path="/NewSeller" component={NewSeller}></Route> */}
+            <Route exact path="/SellerInfo" component={(props) => {
+              return (
+                <SellerInfo
+                  sellerId={this.state.loginSellerId} sellerName={this.state.loginSellerName}
+                />
+              );
+            }}
+            ></Route>
             <Route exact path="/OldUser" component={OldUser}></Route>
             <Route exact path="/AddItem" component={AddItem}></Route>
+
 
             <Route
               path="/Search"

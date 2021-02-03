@@ -15,7 +15,8 @@ export default class OldUser extends Component {
       sellerId: "",
       sellerItem: [],
       login: false,
-      name: ""
+      name: "",
+
 
     };
   }
@@ -27,9 +28,12 @@ export default class OldUser extends Component {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
         console.log("id", response.data[0]._id);
-        this.setState({ sellerId: response.data[0]._id, login: true, name: response.data[0].name });
-        this.props.handleLogin()
-        this.getsellerItem();
+        // this.setState({ sellerId: response.data[0]._id, login: true, name: response.data[0].name });
+        // this.props.handleLogin()
+        this.setState({ login: true});
+        this.props.handleLogin(response.data[0]._id, response.data[0].name)
+
+        // this.getsellerItem();
       })
       .catch((err) => {
         console.log("ERR: ", err);
@@ -50,7 +54,7 @@ export default class OldUser extends Component {
 
   render() {
     if (this.state.login == false) {
-      return (<Router><div className="container">
+      return (<div className="container">
         <div className="myCard">
           <div className="row">
             <div className="col-md-6 b">
@@ -113,13 +117,13 @@ export default class OldUser extends Component {
         </div>
       </div>
       
-      </Router>
+    
       )
     }
     else {
       return (
-        <Router>
-          <Switch>
+       
+         
             <Route exact
               path="/SellerInfo"
               component={(props) => {
@@ -127,8 +131,8 @@ export default class OldUser extends Component {
               }}
             ></Route>
 
-          </Switch>
-        </Router>
+          
+            // <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
 
 
       )
