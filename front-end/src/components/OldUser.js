@@ -106,7 +106,7 @@ export default class OldUser extends Component {
               </div>
             </div>
             <div className="col-md-6 c">
-              <div className=" myRightCtn">
+              <div className=" myRightCtnSignin ">
                 <div className="box">
                   <header>Welcome back</header>
 
