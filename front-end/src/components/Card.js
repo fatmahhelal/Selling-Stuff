@@ -46,7 +46,7 @@ export default class Card extends Component {
 
   getItemInfor = () => {
     axios
-      .get(`http://localhost:5000/OneItem?id=${this.props.item._id}`)
+      .get(`/api/seller/OneItem?id=${this.props.item._id}`)
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);

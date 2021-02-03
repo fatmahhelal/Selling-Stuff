@@ -21,7 +21,7 @@ export default class AddItem extends Component {
     const { itemTitle, image, description, price, stateItem } = this.state
     e.preventDefault()
     console.log(this.state)
-    axios.post(`http://localhost:5000/AddItem?userName=${this.state.userName}`, { itemTitle, image, description, price, stateItem })
+    axios.post(`/api/seller/AddItem?userName=${this.state.userName}`, { itemTitle, image, description, price, stateItem })
       .then(respons => {
         console.log(respons.data)
         this.setState({ itemTitle: '', image: '', description: '', price: '', stateItem: '', youAdded: 'You Added' })

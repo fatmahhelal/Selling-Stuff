@@ -22,7 +22,7 @@ export default class OldUser extends Component {
 
   getsellerInfo = () => {
     axios
-      .get(`http://localhost:5000/oneSellerpas?userName=${this.state.sellerName}&password=${this.state.password}`)
+      .get(`/api/seller/oneSellerpas?userName=${this.state.sellerName}&password=${this.state.password}`)
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);

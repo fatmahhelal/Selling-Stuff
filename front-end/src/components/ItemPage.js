@@ -34,7 +34,7 @@ export default class ItemPage extends Component {
   getSeller = () => {
     const sellerId = this.state.itemInfo.sellerId
     axios
-      .get(`http://localhost:5000/oneSellerId?id=${sellerId}`)
+      .get(`/api/seller/oneSellerId?id=${sellerId}`)
       .then((response) => {
         this.setState({
           sellerName: response.data.name,
@@ -68,7 +68,7 @@ export default class ItemPage extends Component {
                 </a>
                 <a href={"https://wa.me/" + this.state.number + "/?text=urlencodedtext"} target="_blank">
                   <button type="button" class="btn btn-outline-success">
-                    Whats</button>
+                    What's</button>
                 </a>
                 </div>
               </div>
@@ -79,3 +79,6 @@ export default class ItemPage extends Component {
     )
   }
 }
+// mongodb+srv://GhaidaaKhalil:UItJ07EVuLiyiyxi@cluster0.rrwqc.mongodb.net/selling?retryWrites=true&w=majority
+
+

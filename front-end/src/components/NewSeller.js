@@ -27,7 +27,7 @@ export default class NewSeller extends Component {
     e.preventDefault();
     console.log("bring state", this.state);
     axios
-      .post("http://localhost:5000/addUser", this.state)
+      .post("/api/seller/addUser", this.state)
       .then((respons) => {
         console.log(respons.data);
         this.setState({ userName: "", name: "", cotactInfo: "", password: "", welcomeText: "You have account now" });

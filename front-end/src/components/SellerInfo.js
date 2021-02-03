@@ -16,7 +16,7 @@ export default class SellerInfo extends Component {
   }
   getsellerItem = () => {
     axios
-      .get(`http://localhost:5000/SellerItem?Id=${this.props.sellerId}`)
+      .get(`/api/seller/SellerItem?Id=${this.props.sellerId}`)
       .then((response) => {
         console.log("getSellerItems: ", response);
         console.log("getSellerItemsData: ", response.data);
@@ -34,6 +34,7 @@ export default class SellerInfo extends Component {
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
+        
       })
       .catch((err) => {
         console.log("ERR: ", err);

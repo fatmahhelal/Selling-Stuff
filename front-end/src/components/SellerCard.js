@@ -6,9 +6,9 @@ export default class SellerCard extends Component {
   //function delete item end point delete
   //item id will be {this.props.item._id}
   deleteItem = () => {
-
+   
     axios
-      .delete(`http://localhost:5000/itemDelete?id=${this.props.item._id}`)
+      .delete(`/api/seller/itemDelete?id=${this.props.item._id}`)
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);

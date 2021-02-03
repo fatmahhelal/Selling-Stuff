@@ -2,6 +2,8 @@
 const express = require('express');
 require("dotenv").config();
 
+const path = require('path')
+
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -10,7 +12,7 @@ const PORT = process.env.PORT ||5000;
 const cors = require("cors");
 
 //Make sure to add to your whitelist any website or APIs that connect to your backend.
-var whitelist = [`http://localhost:${PORT}`, "http://example2.com"];
+var whitelist = [`http://localhost:${PORT}`];
 
 var corsOptions = {
   origin: function (origin, callback) {
@@ -37,6 +39,8 @@ const app = express();
 app.use('/api/seller',sellerRouter);
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "build")));
+
 // Require DB Configuration File
 const db_url = require('./db');
 
@@ -48,6 +52,11 @@ mongoose.connection.once('open', () => {
 
 
 
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+}); 
+
+app.listen(PORT);
 
 app.get('/', (req, res) => {
   console.log('get /');
@@ -76,9 +85,12 @@ app.use(
 
 
 // Start the server to listen for requests on a given port
-app.listen(PORT, () => {
-  console.log(`sellerItem => http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`sellerItem => http://localhost:${PORT}`);
+// });
+
+
+
 
 /*
   C.R.U.D - Actions Table
