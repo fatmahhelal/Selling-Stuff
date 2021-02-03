@@ -20,6 +20,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.myRightCtnSignin header {
+  color: rgb(10, 10, 10);
+  font-size: 44px;
+  /* margin-top: -80px; */
+}
 .myRightCtnSignin{
   
   position: relative;
