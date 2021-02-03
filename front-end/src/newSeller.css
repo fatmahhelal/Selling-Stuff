@@ -28,7 +28,7 @@
 .myRightCtnSignin{
   
   position: relative;
-  background-image: url("https://media.giphy.com/media/lTXepVrUf7XBoBGgzW/giphy.gif");
+  background-image: url("https://zaayega.com/blog/wp-content/uploads/2015/03/Benefits-of-selling-products-online-in-India.jpg");
   background-size: 400px 500px;
   background-repeat: no-repeat;
   border-radius: 25px;
@@ -39,7 +39,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation-name: anim;
+  animation-name: sigin;
   animation-direction: alternate-reverse;
   animation-duration: 15s;
   animation-fill-mode: forwards;
@@ -47,7 +47,7 @@
   animation-play-state: running;
   animation-timing-function: ease-in-out;
 }
-@keyframes anim {
+@keyframes sigin {
   0% {
     background-image: url("https://cdn5.vectorstock.com/i/1000x1000/69/79/image-about-buying-and-selling-online-vector-22286979.jpg");
   }
@@ -57,7 +57,7 @@
   }
 
   75%{
-    background-image: url("https://media.giphy.com/media/lTXepVrUf7XBoBGgzW/giphy.gif")
+    background-image: url("https://zaayega.com/blog/wp-content/uploads/2015/03/Benefits-of-selling-products-online-in-India.jpg")
   }
 
   100% {
