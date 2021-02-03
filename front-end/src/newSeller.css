@@ -41,7 +41,7 @@
   align-items: center;
   animation-name: anim;
   animation-direction: alternate-reverse;
-  animation-duration: 5s;
+  animation-duration: 15s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-play-state: running;
@@ -53,7 +53,11 @@
   }
 
   50%{
-    background-image: url("https://m.media-amazon.com/images/G/31/amazonservices/blog/SOA_Blog_1_The-_Wild-Wild-World-of-Online-Selling._SL1280_FMjpg_.jpg");
+    background-image: url("https://www.finplus.co.in/wp-content/uploads/2017/05/Sell-products-online-why-should-I-start-selling-online.jpg");
+  }
+
+  75%{
+    background-image: url("https://media.giphy.com/media/lTXepVrUf7XBoBGgzW/giphy.gif")
   }
 
   100% {

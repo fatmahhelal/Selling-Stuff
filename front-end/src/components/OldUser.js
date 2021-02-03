@@ -59,7 +59,7 @@ export default class OldUser extends Component {
           <div className="row">
             <div className="col-md-6 b">
               <div className="myLeftCtn">
-                <header>{this.state.welcomeText}</header>
+                <header>Welcome Back</header>
                 <p>{this.state.errorMes}</p>
                 <form
                   className="myForm text-center"
@@ -108,7 +108,7 @@ export default class OldUser extends Component {
             <div className="col-md-6 c">
               <div className=" myRightCtnSignin ">
                 <div className="box">
-                  <header>Welcome back</header>
+                  
 
                 </div>
               </div>
