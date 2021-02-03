@@ -1,6 +1,8 @@
 // Require necessary NPM packages
 const express = require('express');
+const app = express();
 require("dotenv").config();
+const path =require('path')
 
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -31,7 +33,7 @@ app.use(cors(corsOptions));
 // Require Route Files
 const sellerRouter = require('./routes/seller');
 // Instantiate Express Application Object
-const app = express();
+
 
 /*** Routes ***/
 
