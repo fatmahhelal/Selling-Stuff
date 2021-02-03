@@ -12,7 +12,11 @@ export default class NewSeller extends Component {
       cotactInfo: "",
       password: "",
       welcomeText: "",
+
+      phoneNumber: ""
+
       errorMes:""
+
     };
   }
   ChangHandler = (e) => {
@@ -32,12 +36,16 @@ export default class NewSeller extends Component {
         console.log(error);
         this.setState({errorMes:"the username already used "})
       });
+
+    this.setState({ userName: "", name: "", cotactInfo: "", phoneNumber: "", password: "", welcomeText: "You have account now" });
+
     
+
 
   };
 
   render() {
-    const { userName, name, cotactInfo, password } = this.state;
+    const { userName, name, cotactInfo, phoneNumber, password } = this.state;
     return (
       <div className="container">
         <div className="myCard">
@@ -85,6 +93,19 @@ export default class NewSeller extends Component {
                       placeholder="enter your Email"
                       name="cotactInfo"
                       value={cotactInfo}
+                      onChange={this.ChangHandler}
+                      required
+                    />
+                  </div>
+                  <br></br>
+                  <div className="form-group">
+                    <i className="fa fa-envelope"></i>
+                    <input
+                      className="myInput"
+                      type="number"
+                      placeholder="enter your Phone No"
+                      name="phoneNumber"
+                      value={phoneNumber}
                       onChange={this.ChangHandler}
                       required
                     />

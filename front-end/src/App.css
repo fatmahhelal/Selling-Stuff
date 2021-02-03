@@ -43,14 +43,14 @@
 
 
 .buttonCard {
-  width: 95px;
+  width: 90px;
   margin: 5px !important
   
 }
 .botCon{
   position: absolute;
   bottom: 8px;
-  left: 19%;
+  left: 3.5%;
   right: 20%;
 }
 
