@@ -78,6 +78,12 @@ const reactPort = 5000;
 /*** Routes ***/
 // Define PORT for the API to run on
 
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
 
 // Start the server to listen for requests on a given port
 app.listen(PORT, () => {
