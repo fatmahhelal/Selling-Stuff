@@ -20,7 +20,7 @@ export default class ItemPage extends Component {
 
   getItemInfor = () => {
     axios
-      .get(`http://localhost:5000/OneItem?id=${this.props.itemId}`)
+      .get(`/api/seller/OneItem?id=${this.props.itemId}`)
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);

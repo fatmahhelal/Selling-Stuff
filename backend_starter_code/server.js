@@ -14,7 +14,7 @@ const PORT = process.env.PORT ||5000;
 //Make sure to add to your whitelist any website or APIs that connect to your backend.
 
 
-var whitelist = [`http://localhost:${PORT}`];
+var whitelist = [`http://localhost:${PORT}`,`https://project3sell.herokuapp.com`];
 
 var corsOptions = {
   origin: function (origin, callback) {

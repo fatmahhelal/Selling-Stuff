@@ -28,7 +28,7 @@ export default class Card extends Component {
   getSeller = () => {
     const sellerId = this.props.item.sellerId
     axios
-      .get(`http://localhost:5000/oneSellerId?id=${sellerId}`)
+      .get(`/api/seller/oneSellerId?id=${sellerId}`)
       .then((response) => {
         this.setState({
           sellerName: response.data.name,

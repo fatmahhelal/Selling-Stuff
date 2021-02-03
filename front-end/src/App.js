@@ -40,7 +40,7 @@ class App extends React.Component {
 
   searchResult = () => {
     var search = this.state.searchWord;
-    var query = `http://localhost:5000/oneItemByName?itemTitle=${search}`;
+    var query = `/api/seller/oneItemByName?itemTitle=${search}`;
     axios
       .get(query)
       .then((response) => {
@@ -97,7 +97,7 @@ class App extends React.Component {
   // this is the way that we learn till now
   getAllItem = () => {
     axios
-      .get(`http://localhost:5000/allItem`)
+      .get(`/api/seller/allItem`)
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);

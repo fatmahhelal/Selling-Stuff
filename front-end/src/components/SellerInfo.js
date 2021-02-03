@@ -29,7 +29,7 @@ export default class SellerInfo extends Component {
   deleteAll = () => {
     axios
       .delete(
-        `http://localhost:5000/deleteAllItem?userId=${this.props.sellerId}`
+        `/api/seller/deleteAllItem?userId=${this.props.sellerId}`
       )
       .then((response) => {
         console.log("RESPONSE: ", response);
