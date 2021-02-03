@@ -10,7 +10,7 @@ const PORT = process.env.PORT ||5000;
 const cors = require("cors");
 
 //Make sure to add to your whitelist any website or APIs that connect to your backend.
-var whitelist = [`http://localhost:${PORT}`, "http://example2.com"];
+
 
 var whitelist = [`http://localhost:${PORT}`];
 
