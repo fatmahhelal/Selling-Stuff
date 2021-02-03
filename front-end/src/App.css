@@ -43,8 +43,12 @@
 
 
 .buttonCard {
-  width: 90px;
-  margin: 5px !important
+  background: linear-gradient(
+    45deg,
+    rgba(34, 73, 180, 0.822),
+    rgba(29, 126, 182, 0.5)
+  );
+
   
 }
 .botCon{

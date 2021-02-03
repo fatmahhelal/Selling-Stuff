@@ -52,15 +52,9 @@ export default class FavCard extends Component {
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">
                 <Link to={`/ItemInfo/:${this.props.item._id}`}>
-                  <button type="button" class="btn btn-outline-success buttonCard" onClick="window.open('/ItemInfo')" >More</button>
+                  <button type="button" class="form-group buttonCard" onClick="window.open('/ItemInfo')" >More</button>
                 </Link>
-                <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"} target="_blank">
-                  <button type="button" class="btn btn-outline-success buttonCard">Email</button>
-                </a>
-                <a href={"https://wa.me/" + this.state.number + "/?text=urlencodedtext"} target="_blank">
-                  <button type="button" class="btn btn-outline-success buttonCard">
-                    Whats</button>
-                </a>
+                
               </div>
             </div>
           </div>
