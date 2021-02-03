@@ -144,7 +144,7 @@ class App extends React.Component {
     const Login = [
       { to: '/', title: 'Home' },
       { to: "/Favorite", title: "Favorite" },
-      { to: "/OldUser", title: "Personal" },
+      { to: "/SellerInfo", title: "Personal" },
       //{ to: '/OldUser', title: 'Sign out' },
     ];
 
@@ -261,26 +261,6 @@ class App extends React.Component {
                 return <ItemInfo />;
               }}
             />
-
-
-            <Route exact path="/OldUser" component={(props) => {
-              return (
-                <OldUser
-                  handleLogin={this.handleLogin}
-                />
-              );
-            }}
-            />
-            <Route exact path="/AddItem" component={AddItem}></Route>
-            <Route exact path="/OldUser" component={(props) => {
-              return (
-                <OldUser
-                  handleLogin={this.handleLogin}
-                />
-              );
-            }}
-            />
-
 
 
             <Route
