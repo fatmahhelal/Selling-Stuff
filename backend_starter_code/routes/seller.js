@@ -241,19 +241,10 @@ router.post("/AddItem", async (req, res) => {
 router.delete("/itemDelete", async (req, res) => {
   try {
     console.log("delete /item");
-    let seller = await Seller.findOne({ userName: req.query.userName });
-    // let itemfound = seller.item.indexOf(req.query.id)
-    // const ItemId = seller.item.findByIdAndRemove(req.query.id);
-    // ItemId.save()
     let item = await Item.findById(req.query.id).remove();
-
-    console.log("FOUND USER: ", seller);
     console.log("FOUND Item: ", item);
-    if (item) {
-      res.json(item);
-    } else {
-      res.json(err);
-    }
+    await item.save()
+    res.json(item)
   } catch (err) {
     res.json(err);
   }
