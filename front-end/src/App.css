@@ -6,7 +6,7 @@
 
 .card {
   width: 320px;
-  height: 590px; 
+  height: 540px; 
   padding: 5px;
   margin: 20px;
   float: left;
@@ -48,6 +48,14 @@
     rgba(34, 73, 180, 0.822),
     rgba(29, 126, 182, 0.5)
   );
+
+  width: 230px;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
 
   
 }

@@ -56,7 +56,6 @@ export default class Card extends Component {
             <h3 class="card-text">{this.props.item.itemTitle}</h3>
             <p class="card-text">{this.props.item.description}</p>
             <p class="card-text priceCon">{this.props.item.price} .SR </p>
-            <p class="card-text">Selling By: {this.state.sellerName}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">
                 <Link to={`/ItemInfo/:${this.props.item._id}`}>
