@@ -127,7 +127,7 @@ export default class OldUser extends Component {
             <Route exact
               path="/SellerInfo"
               component={(props) => {
-                return <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
+                return <SellerInfo  />
               }}
             ></Route>
 

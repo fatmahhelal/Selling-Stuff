@@ -34,7 +34,7 @@ class App extends React.Component {
       loginSellerId: loginSellerId,
       loginSellerName: loginSellerName
     }, function () {
-      console.log("the Fav Array", this.state.loginSellerId);
+      console.log("loged in", this.state.loginSellerId);
     });
     console.log(loginSellerId);
   }
@@ -43,14 +43,10 @@ class App extends React.Component {
     this.getAllItem();
   };
 
-  handleLogin = () => {
-    this.setState({ userStatus: !this.state.userStatus })
-  }
 
 
-  handleItemInfo = (id) => {
-    this.setState({ ItemId: id });
-  };
+
+
 
   searchResult = () => {
     var search = this.state.searchWord;
