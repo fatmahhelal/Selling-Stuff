@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Search from "./components/Search";
 import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
-import AddItem from './components/AddItem'
+import AddItem from './components/addItem'
 
 
 class App extends React.Component {

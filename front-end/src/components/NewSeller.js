@@ -13,7 +13,7 @@ export default class NewSeller extends Component {
       password: "",
       welcomeText: "",
 
-      phoneNumber: ""
+      phoneNumber: "",
 
       errorMes:""
 
@@ -99,7 +99,7 @@ export default class NewSeller extends Component {
                   </div>
                   <br></br>
                   <div className="form-group">
-                    <i className="fa fa-envelope"></i>
+                    <i className="fa fa-volume-control-phone"></i>
                     <input
                       className="myInput"
                       type="number"

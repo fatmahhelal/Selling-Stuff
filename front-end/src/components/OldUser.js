@@ -37,9 +37,7 @@ export default class OldUser extends Component {
       });
   };
 
-  // componentDidMount = () => {
-  //   this.getsellerItem();
-  // };
+
 
 
 
@@ -71,7 +69,7 @@ export default class OldUser extends Component {
                       type="text"
                       placeholder=" enter your username"
                       name="userName"
-                      // value={userName}
+                     
                       onChange={(e) => {
                         this.setState({ sellerName: e.target.value });
                       }}
@@ -114,13 +112,7 @@ export default class OldUser extends Component {
           </div>
         </div>
       </div>
-        {/* <Route
-              exact
-              path="/SellerInfo"
-              component={(props) => {
-                return <SellerInfo Item={this.state.sellerItem} />;
-              }}
-            ></Route> */}
+      
       </Router>
       )
     }

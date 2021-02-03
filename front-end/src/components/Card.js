@@ -59,7 +59,7 @@ export default class Card extends Component {
     // localStorage Favorite item array so we don't need to stor in db
     localStorage.setItem("sellerName", JSON.stringify(this.state.sellerName));
     localStorage.setItem("sellerContact", JSON.stringify(this.state.sellerContact));
-    // localStorage.setItem("itemId", JSON.stringify(this.props.item._id));
+    
   }
   render() {
 
