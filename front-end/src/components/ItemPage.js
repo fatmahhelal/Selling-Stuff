@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
-
+import Fav from './Fav'
 
 export default class ItemPage extends Component {
   constructor(props) {
@@ -49,7 +49,7 @@ export default class ItemPage extends Component {
         console.log('ERR: ', err);
       });
   }
-  
+  state
   render() {
     return (
       <div>
@@ -57,12 +57,16 @@ export default class ItemPage extends Component {
           <div class="myCard cardInfo boot">
             <img src={this.state.itemInfo.image} width='800px' height='500px'></img>
             <div class="card-body">
+              <Fav/>
               <h3 class="card-text">{this.state.itemInfo.itemTitle}</h3>
               <p class="card-text">{this.state.itemInfo.description}</p>
+              <p class="card-text">Item state: {this.state.state}</p>
               <p class="card-text priceCon">{this.state.itemInfo.price} .SR</p>
               <p class="card-text">Selling By: {this.state.sellerName}</p>
+             
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
+                  <p>To communicate:</p>
                   <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
                   {/* <button type="button" class=" form-group buttonCard ">Email</button> */}
                   <img src="https://img.icons8.com/nolan/64/email.png"/>
