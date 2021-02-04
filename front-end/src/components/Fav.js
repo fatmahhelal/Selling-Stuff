@@ -13,14 +13,12 @@ export default class Fav extends Component {
     this.props.getFav(this.props.item, this.state.isFav)
   }
   render() {
-    if (!this.state.isFav) {
-      return (
-        <div className='material-icons favorite_border' onClick={this.handleClick}>
-          <i class="material-icons">favorite_border</i></div>
-      )
-    } else {
-      return <div className='material-icons favorite' onClick={this.handleClick}>
-        <i class="material-icons">favorite</i></div>
-    }
+    const isFave = (this.state.isFave) ? 'favorite' : 'favorite'
+    
+    return (
+      <div className={`material-icons  ${isFave} heart`} onClick={this.handleClick} >
+          <p className="material-icons heart">{isFave}</p>
+      </div>)
+
   }
 }

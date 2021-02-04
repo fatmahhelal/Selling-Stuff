@@ -159,3 +159,8 @@
   color: #0f8c64;
   font-weight: bolder;
 }
+
+
+.heart:hover{
+  color: red;
+}
