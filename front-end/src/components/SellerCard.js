@@ -12,7 +12,7 @@ export default class SellerCard extends Component {
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
-        window.location.reload()
+        
       })
       .catch((err) => {
         console.log("ERR: ", err);
