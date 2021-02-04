@@ -108,3 +108,9 @@ The web app also has a responsive design.
 - Rating item
 - Filter item by status or price
 - Contact vie live chat 
+
+# Contributors
+- Ghaidaa Khalil
+- Fatimah Alhelal
+- Aseel Al-Qasem
+- Hind Alzhrani
