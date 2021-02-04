@@ -64,11 +64,13 @@ export default class ItemPage extends Component {
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
                   <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
-                  <button type="button" class=" form-group buttonCard ">Email</button>
+                  {/* <button type="button" class=" form-group buttonCard ">Email</button> */}
+                  <img src="https://img.icons8.com/nolan/64/email.png"/>
                 </a>
                 <a href={"https://wa.me/" + this.state.number + "/?text=urlencodedtext"} target="_blank">
-                  <button type="button" class="form-group buttonCard">
-                    What's</button>
+                  {/* <button type="button" class="form-group buttonCard">
+                    What's</button> */}
+                    <img src="https://img.icons8.com/cute-clipart/64/000000/whatsapp.png"/>
                 </a>
                 </div>
               </div>
