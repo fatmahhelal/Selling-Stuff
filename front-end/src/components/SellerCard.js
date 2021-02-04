@@ -33,11 +33,12 @@ export default class SellerCard extends Component {
             {/* <p class="card-text">{this.props.SellerInfo.name}</p> */}
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">
-                <Link to="/editItem">
-                  <button
-                    type="button"
-                    class="btn btn-outline-success btnMore">
-                    Edit
+              <Link to={`/EditItem/:${this.props.item._id}`}>
+                    <button
+                      type="button"
+                      class="btn btn-outline-success btnMore"
+                      onClick="window.open('/EditItem')">
+                      Edit
                     </button>
                 </Link>
                 <a href="">

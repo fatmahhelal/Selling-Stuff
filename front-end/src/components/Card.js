@@ -54,7 +54,6 @@ export default class Card extends Component {
               removeFav={this.props.removeFav}
               item={this.props.item} />
             <h3 class="card-text">{this.props.item.itemTitle}</h3>
-            <p class="card-text">{this.props.item.description}</p>
             <p class="card-text priceCon">{this.props.item.price} .SR </p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">

@@ -11,7 +11,7 @@ import NewSeller from './components/NewSeller'
 import OldUser from './components/OldUser'
 import AddItem from './components/addItem'
 import SellerInfo from './components/SellerInfo'
-
+import EditItem from './components/EditItem'
 
 class App extends React.Component {
   constructor(props) {
@@ -175,7 +175,7 @@ class App extends React.Component {
         <Link to="/Search">
           <button
             class="fa fa-search"
-            class="btn btn-outline-success"
+            class="btn btn-outline-info"
             type="button"
             onClick={this.searchResult}
           > Search</button>
@@ -239,6 +239,7 @@ class App extends React.Component {
 
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
+            <Route exact path="/EditItem/:id" component={EditItem}></Route>
 
 
 
@@ -342,6 +343,7 @@ class App extends React.Component {
             ></Route>
             <Route exact path="/OldUser" component={OldUser}></Route>
             <Route exact path="/AddItem" component={AddItem}></Route>
+            <Route exact path="/EditItem/:id" component={EditItem}></Route>
 
 
             <Route
