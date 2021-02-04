@@ -10,7 +10,7 @@ export default class AddItem extends Component {
       image: '',
       description: '',
       price: '',
-      stateItem: '',
+      state: '',
       youAdded: ''
     }
   }
@@ -18,13 +18,13 @@ export default class AddItem extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
   SubmitHandler = (e) => {
-    const { itemTitle, image, description, price, stateItem } = this.state
+    const { itemTitle, image, description, price, state } = this.state
     e.preventDefault()
     console.log(this.state)
-    axios.post(`/api/seller/AddItem?userName=${this.state.userName}`, { itemTitle, image, description, price, stateItem })
+    axios.post(`/api/seller/AddItem?userName=${this.state.userName}`, { itemTitle, image, description, price, state })
       .then(respons => {
         console.log(respons.data)
-        this.setState({ itemTitle: '', image: '', description: '', price: '', stateItem: '', youAdded: 'Item Added' })
+        this.setState({ itemTitle: '', image: '', description: '', price: '', state: '', youAdded: 'Item Added' })
       })
       .catch(error => {
         console.log(error)
@@ -33,7 +33,7 @@ export default class AddItem extends Component {
 
 
   render() {
-    const { userName, itemTitle, image, description, price, stateItem } = this.state
+    const { userName, itemTitle, image, description, price, state } = this.state
     return (
 
       <div className="container">
@@ -110,8 +110,8 @@ export default class AddItem extends Component {
                   <label>item state</label>
                   <input
                     className="myInput ad"
-                    name='stateItem'
-                    value={stateItem}
+                    name='state'
+                    value={state}
                     onChange={this.ChangHandler}
 
                   />
