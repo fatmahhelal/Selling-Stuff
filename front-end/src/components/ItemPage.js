@@ -66,7 +66,7 @@ export default class ItemPage extends Component {
              
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
-                  <p>To communicate:</p>
+                  <p className='pItem'>To communicate:</p>
                   <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
                   {/* <button type="button" class=" form-group buttonCard ">Email</button> */}
                   <img src="https://img.icons8.com/nolan/64/email.png"/>

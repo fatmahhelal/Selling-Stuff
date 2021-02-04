@@ -65,11 +65,13 @@
   bottom: 8px;
   left: 3.5%;
   right: 20%;
+  display: flex;
+  justify-content: center;
 }
 
 .priceCon{
-  left: 20%;
-  right: 20%;
+  /* left: 20%; */
+  right: 27%;
   background-color: rgba(0, 0, 0, 0.247) ;
   color: whitesmoke;
   font-weight: bold;
@@ -130,8 +132,8 @@
 }
 .cardInfo
 {
-  width: 850px;
-  height: 800px !important;
+  width: 800px;
+  height: 900px !important;
   margin-bottom: 30px;
   left: 20% !important;
   position: relative;
@@ -139,3 +141,11 @@
   bottom: 1%;
   
 }
+
+.pItem{
+  margin-bottom: 0px;
+  position: relative;
+  top: 25px;
+  margin-right: 10px;
+}
+

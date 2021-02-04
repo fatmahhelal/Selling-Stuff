@@ -49,7 +49,7 @@ export default class AddItem extends Component {
 
                 <div className="form-group">
 
-                  <label>userName</label>
+                  <label>username</label>
                   <input
                     className="myInput ad"
                     type="text"
@@ -96,7 +96,7 @@ export default class AddItem extends Component {
                 <br></br>
                 <div className="form-group">
 
-                  <label>price item</label>
+                  <label>item price</label>
                   <input
                     className="myInput ad"
                     name='price'
@@ -107,7 +107,7 @@ export default class AddItem extends Component {
                 </div>
                 <br></br>
                 <div className="form-group">
-                  <label>state item</label>
+                  <label>item state</label>
                   <input
                     className="myInput ad"
                     name='stateItem'
