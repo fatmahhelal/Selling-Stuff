@@ -28,7 +28,6 @@ export default class SellerCard extends Component {
           <img src={this.props.item.image} width="300px" height="300px"></img>
           <div class="card-body">
             <h3 class="card-text">{this.props.item.itemTitle}</h3>
-            <p class="card-text">{this.props.item.description}</p>
             <p class="card-text ratingCon">{this.props.item.price} .SR </p>
             {/* <p class="card-text">{this.props.SellerInfo.name}</p> */}
             <div class="d-flex justify-content-between align-items-center">

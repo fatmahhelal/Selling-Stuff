@@ -127,6 +127,10 @@ class App extends React.Component {
       "searchResultArray",
       JSON.stringify(this.state.searchResultArray)
     );
+    localStorage.setItem("loginSellerId", JSON.stringify(this.state.loginSellerId));
+    localStorage.setItem("loginSellerName", JSON.stringify(this.state.loginSellerName));
+    localStorage.setItem("userStatus", JSON.stringify(this.state.userStatus));
+
   }
 
   render() {
@@ -239,7 +243,10 @@ class App extends React.Component {
 
             {/* <Route exact path="/Personal" component={Personal} /> */}
             <Route exact path="/NewSeller" component={NewSeller}></Route>
-            <Route exact path="/EditItem/:id" component={EditItem}></Route>
+            <Route exact path="/EditItem/:id" component={(props) => {
+                return <EditItem userStatus={this.state.userStatus}/>;
+              }}
+            /> 
 
 
 
@@ -248,7 +255,7 @@ class App extends React.Component {
               exact
               path="/OldUser"
               component={(props) => {
-                return <OldUser handleLogin={this.handleLogin} />;
+                return <OldUser handleLogin={this.handleLogin}  userStatus={this.state.userStatus}/>;
               }}
             />
             <Route
@@ -336,13 +343,24 @@ class App extends React.Component {
             <Route exact path="/SellerInfo" component={(props) => {
               return (
                 <SellerInfo
-                  sellerId={this.state.loginSellerId} sellerName={this.state.loginSellerName}
+                  sellerId={this.state.loginSellerId}
+                   sellerName={this.state.loginSellerName}
+                    userStatus={this.state.userStatus}
+                     handleLogin={this.handleLogin}
                 />
               );
             }}
             ></Route>
-            <Route exact path="/OldUser" component={OldUser}></Route>
-            <Route exact path="/AddItem" component={AddItem}></Route>
+             <Route
+              exact
+              path="/OldUser"
+              component={(props) => {
+                return <OldUser handleLogin={this.handleLogin}  userStatus={this.state.userStatus}/>;
+              }}
+            />
+            <Route exact path="/AddItem" component={(props) => {
+                return <addItem handleLogin={this.handleLogin}  userStatus={this.state.userStatus}/>;
+              }}></Route>
             <Route exact path="/EditItem/:id" component={EditItem}></Route>
 
 

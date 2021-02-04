@@ -53,7 +53,7 @@ export default class OldUser extends Component {
   }
 
   render() {
-    if (this.state.login == false) {
+    if (this.props.userStatus == false) {
       return (<div className="container">
         <div className="myCard">
           <div className="row">
@@ -132,7 +132,7 @@ export default class OldUser extends Component {
             ></Route>
 
           
-            // <SellerInfo Item={this.state.sellerItem} sellerId={this.state.sellerId} sellerName={this.state.name} />
+           
 
 
       )

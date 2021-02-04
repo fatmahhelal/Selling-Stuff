@@ -55,19 +55,19 @@ export default class ItemPage extends Component {
       <div>
         <div className="boot">
           <div class="myCard cardInfo boot">
-            <img src={this.state.itemInfo.image} width='500px' height='500px'></img>
+            <img src={this.state.itemInfo.image} width='800px' height='500px'></img>
             <div class="card-body">
               <h3 class="card-text">{this.state.itemInfo.itemTitle}</h3>
               <p class="card-text">{this.state.itemInfo.description}</p>
-              <p class="card-text priceCon">{this.state.itemInfo.price}</p>
+              <p class="card-text priceCon">{this.state.itemInfo.price} .SR</p>
               <p class="card-text">Selling By: {this.state.sellerName}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group botCon">
                   <a href={"mailto:" + this.state.sellerContact + "?subject=your title&body=TThe message"}>
-                  <button type="button" class="btn btn-outline-success">Email</button>
+                  <button type="button" class=" form-group buttonCard ">Email</button>
                 </a>
                 <a href={"https://wa.me/" + this.state.number + "/?text=urlencodedtext"} target="_blank">
-                  <button type="button" class="btn btn-outline-success">
+                  <button type="button" class="form-group buttonCard">
                     What's</button>
                 </a>
                 </div>
