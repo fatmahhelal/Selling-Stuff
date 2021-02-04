@@ -13,16 +13,33 @@ modify it, or removing it from your item list.
 ### :pencil: Wireframe
 Started the app by designing its layout framework by <a href= 'https://app.diagrams.net/'>Draw.io</a>. 
 
+ <img src="Home.jpg" width="350" title="home">
 
-### :bulb: Technologies Used.
+<img src="sign in page.jpg" width="350" title="signin">
+<img src="sign up.jpg" width="350" title="signup">
+<img src="Personal page.jpg" width="350" title="Personal page">
+<img src="Add Item.jpg" width="350" title="AddItem">
+<img src="Fav.jpg" width="350" title="Favorite">
+ <img src="Product info.jpg" width="350" title="Productinfo">
+
+
+
+
+
+
+#
+# Technologies Used.
 * HTML
 * CSS
 * JavaScript (ES6)
+* Axios
+* Express
 * Bootstrap
 * Reacte js
 * mongoose
 * Postman 
 * Asana 
+* Heroku 
 
 ### :sunglasses: User Stories
 * As a user, I should be able to see all items
@@ -40,19 +57,34 @@ Started the app by designing its layout framework by <a href= 'https://app.diagr
 
 
 
+
+
+
+
 ### :computer: The Web Application
 - The Home Page:
 
 Shows a list of valuable items that user can view more details about an item or add to favorite list or contact with seller.
 
+ <img src="homepageDemo.png" width="400"  title="signin">
 
-- The Favorite Component:
 
-Will display a list of the user favorite places have added there before with its information. And can delete the list or remove one of it.
-
-- Personal Page:
 - sign up page:
+
+Welcome page, this page as a Form that takes all informaition about the seller to save it in our data base and then be able to sign in.
+
+<img src="signup.png" width="400"  title="signup">
+
 - sign in page:
+
+page that takes only the username and seller password thats already stored in our data base.
+
+<img src="signin.png" width="400"  title="signin">
+
+- Seller Control Panel page:
+
+list all seller item and the seller will be able to add new item, delete and edit on the list.
+
 
 
 ### :iphone: Phone Web Page
@@ -60,14 +92,13 @@ The web app also has a responsive design.
 
 
 ### :muscle: Challenges
-
+we faced alot of challenges ...
 ### :link: Links
-* Live - <a href='#'/> Places Finder </a>
+* Live - <a href='https://project3sell.herokuapp.com/'> Selling  </a>
 * Github - <a href='https://git.generalassemb.ly/ghaidaakhalil/Project-3'> Here </a>
 
 ### :sparkles:Future Features:
 - Add Comment on item
 - Rating item
 - Filter item by status or price
-- Add new item
-- Contact by email
+- Contact vie live chat 
