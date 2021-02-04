@@ -262,7 +262,7 @@ class App extends React.Component {
               exact
               path="/ItemInfo/:id"
               component={(props) => {
-                return <ItemInfo />;
+                return <ItemInfo getFav={this.getFav}/>;
               }}
             />
 
@@ -379,7 +379,7 @@ class App extends React.Component {
               exact
               path="/ItemInfo/:id"
               component={(props) => {
-                return <ItemInfo />;
+                return <ItemInfo  getFav={this.getFav}/>;
               }}
             />
 

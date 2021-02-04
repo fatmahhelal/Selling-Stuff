@@ -9,7 +9,7 @@ export default class ItemInfo extends Component {
     const id = currentRoute.split('/ItemInfo/:');
     return (
       <div className="topHeader">
-        <ItemPage itemId={id[1]} />
+        <ItemPage itemId={id[1]} getFav={this.props.getFav} />
       </div>
     )
   }

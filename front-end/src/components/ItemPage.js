@@ -55,9 +55,9 @@ export default class ItemPage extends Component {
       <div>
         <div className="boot">
           <div class="myCard cardInfo boot">
-            <img src={this.state.itemInfo.image} width='800px' height='500px'></img>
+            <img src={this.state.itemInfo.image} width='600px' height='500px'></img>
             <div class="card-body">
-              <Fav/>
+              <Fav getFav={this.props.getFav}/>
               <h3 class="card-text">{this.state.itemInfo.itemTitle}</h3>
               <p class="card-text">{this.state.itemInfo.description}</p>
               <p class="card-text">Item state: {this.state.itemInfo.state}</p>
