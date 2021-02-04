@@ -60,7 +60,7 @@ export default class ItemPage extends Component {
               <Fav/>
               <h3 class="card-text">{this.state.itemInfo.itemTitle}</h3>
               <p class="card-text">{this.state.itemInfo.description}</p>
-              <p class="card-text">Item state: {this.state.state}</p>
+              <p class="card-text">Item state: {this.state.itemInfo.state}</p>
               <p class="card-text priceCon">{this.state.itemInfo.price} .SR</p>
               <p class="card-text">Selling By: {this.state.sellerName}</p>
              
