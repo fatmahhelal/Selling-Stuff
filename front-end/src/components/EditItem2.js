@@ -90,7 +90,7 @@ export default class EditItem2 extends Component {
           <div className="col-md-6 b">
             <div className="myLeftCtn add">
             <header>Update an Item</header>
-            <p>{this.state.updateMess}</p>
+            <p className='ItemAdd'>{this.state.updateMess}</p>
           <form 
             className="myForm text-center">
                 <div className="form-group">
