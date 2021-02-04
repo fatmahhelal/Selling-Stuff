@@ -21,7 +21,7 @@ export default class SellerCard extends Component {
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
-        this.setState({delMessage:"you deleted"})
+        this.setState({delMessage:"Item Deleted"})
         
       })
       .catch((err) => {
@@ -39,7 +39,7 @@ export default class SellerCard extends Component {
           <div class="card-body">
             <h3 class="card-text">{this.props.item.itemTitle}</h3>
             <p class="card-text ratingCon">{this.props.item.price} .SR </p>
-            <p>{this.state.delMessage}</p>
+            <p className='sellCard'>{this.state.delMessage}</p>
             
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group botCon">

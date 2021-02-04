@@ -13,6 +13,7 @@ export default class EditItem2 extends Component {
         price: '',
         // state: '',
         itemInfo: [],
+        updateMess:''
         }
       }
 
@@ -69,9 +70,12 @@ export default class EditItem2 extends Component {
             price: this.state.price
             // stateItem: this.state.stateItem
           })
+
+
           .then((response) => {
             console.log("RESPONSE: ", response);
             console.log("DATA: ", response.data);
+            this.setState({updateMess:"Item Updated"})
 
           })
           .catch((err) => {
@@ -86,6 +90,7 @@ export default class EditItem2 extends Component {
           <div className="col-md-6 b">
             <div className="myLeftCtn add">
             <header>Update an Item</header>
+            <p>{this.state.updateMess}</p>
           <form 
             className="myForm text-center">
                 <div className="form-group">
