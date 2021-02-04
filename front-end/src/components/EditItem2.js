@@ -43,7 +43,7 @@ export default class EditItem2 extends Component {
     
   getItemInfor = () => {
     axios
-      .get(`http://localhost:5000/OneItem?id=${this.props.itemId}`)
+      .get(`/api/seller/OneItem?id=${this.props.itemId}`)
       .then((response) => {
         console.log("RESPONSE: ", response);
         console.log("DATA: ", response.data);
@@ -62,7 +62,7 @@ export default class EditItem2 extends Component {
     editItem = () => {
 
         axios
-          .put(`http://localhost:5000/updateItem?id=${this.props.itemId}`,{
+          .put(`/api/seller/updateItem?id=${this.props.itemId}`,{
             itemTitle:this.state.itemTitle,
             image: this.state.image,
             description: this.state.description,
