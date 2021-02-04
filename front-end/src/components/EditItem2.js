@@ -60,8 +60,8 @@ export default class EditItem2 extends Component {
 
       })
   }
-    editItem = () => {
-
+    editItem = (e) => {
+      e.preventDefault()
         axios
           .put(`/api/seller/updateItem?id=${this.props.itemId}`,{
             itemTitle:this.state.itemTitle,
