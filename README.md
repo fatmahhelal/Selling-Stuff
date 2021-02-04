@@ -13,8 +13,12 @@ modify it, or removing it from your item list.
 ### :pencil: Wireframe
 Started the app by designing its layout framework by <a href= 'https://app.diagrams.net/'>Draw.io</a>. 
 
- <img src="Home.jpg" width="350" title="home">
+ER Digram
 
+ <img src="ER.jpg" width="350" title="home">
+
+
+ <img src="Home.jpg" width="350" title="home">
 <img src="sign in page.jpg" width="350" title="signin">
 <img src="sign up.jpg" width="350" title="signup">
 <img src="Personal page.jpg" width="350" title="Personal page">
