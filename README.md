@@ -90,9 +90,11 @@ list all seller item and the seller will be able to add new item, delete and edi
 ### :iphone: Phone Web Page
 The web app also has a responsive design.
 
+<img src="Screenshot_2.png" width="200" title="Productinfo">
 
-### :muscle: Challenges
-we faced alot of challenges ...
+
+
+
 ### :link: Links
 * Live - <a href='https://project3sell.herokuapp.com/'> Selling  </a>
 * Github - <a href='https://git.generalassemb.ly/ghaidaakhalil/Project-3'> Here </a>
