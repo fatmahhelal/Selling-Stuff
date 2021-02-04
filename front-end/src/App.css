@@ -64,13 +64,13 @@
   position: absolute;
   bottom: 8px;
   left: 3.5%;
-  right: 20%;
+  right: 27%;
   display: flex;
   justify-content: center;
 }
 
 .priceCon{
-  /* left: 20%; */
+  left: 20%;
   right: 27%;
   background-color: rgba(0, 0, 0, 0.247) ;
   color: whitesmoke;
