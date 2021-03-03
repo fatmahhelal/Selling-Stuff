@@ -1,6 +1,6 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  Selling Stuff
 ## :round_pushpin: Introduction
-<a href='https://project3sell.herokuapp.com/'>Selling stuff</a> is a Single-Page-Applications that show you a list of different stuff
+<a href='https://project3sell.herokuapp.com/'>Selling Stuff</a> is a Single-Page-Applications that show you a list of different stuff
 such as furniture, utensils, and books that their owner offer on the app for sale,
 whether they are in a new or used condition.
 As a user, you can view any item details. Also, you can search for an item by name or
