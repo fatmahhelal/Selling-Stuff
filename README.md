@@ -13,23 +13,18 @@ modify it, or removing it from your item list.
 ### :pencil: Wireframe
 Started the app by designing its layout framework by <a href= 'https://app.diagrams.net/'>Draw.io</a>. 
 
-ER Digram
-
- <img src="ER.jpg" width="350" title="home">
-
-
- <img src="Home.jpg" width="350" title="home">
-<img src="sign in page.jpg" width="350" title="signin">
-<img src="sign up.jpg" width="350" title="signup">
-<img src="Personal page.jpg" width="350" title="Personal page">
-<img src="Add Item.jpg" width="350" title="AddItem">
-<img src="Fav.jpg" width="350" title="Favorite">
- <img src="Product info.jpg" width="350" title="Productinfo">
+<img src="Home.jpg" width="400" title="home">
+<img src="sign in page.jpg" width="400" title="signin">
+<img src="sign up.jpg" width="400" title="signup">
+<img src="Personal page.jpg" width="400" title="Personal page">
+<img src="Add Item.jpg" width="400" title="AddItem">
+<img src="Fav.jpg" width="400" title="Favorite">
+<img src="Product info.jpg" width="400" title="Productinfo">
 
 
+### :pencil: ER Digram 
 
-
-
+<img src="ER.jpg" width="400" title="home">
 
 #
 # Technologies Used.
@@ -58,12 +53,6 @@ ER Digram
 * As a user (seller), I should be able to add a new item to my list
 
 ## :mag: App Preview
-
-
-
-
-
-
 
 ### :computer: The Web Application
 - The Home Page:
