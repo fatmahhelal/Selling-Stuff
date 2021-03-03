@@ -1,6 +1,6 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)  Selling Stuff
 ## :round_pushpin: Introduction
-Selling stuff is a Single-Page-Applications that show you a list of different stuff
+<a href='https://project3sell.herokuapp.com/'>Selling stuff</a> is a Single-Page-Applications that show you a list of different stuff
 such as furniture, utensils, and books that their owner offer on the app for sale,
 whether they are in a new or used condition.
 As a user, you can view any item details. Also, you can search for an item by name or
@@ -94,14 +94,10 @@ list all seller item and the seller will be able to add new item, delete and edi
 ### :iphone: Phone Web Page
 The web app also has a responsive design.
 
-<img src="Screenshot_2.png" width="200" title="Productinfo">
+<img src="Screenshot_2.png" width="400" title="Productinfo">
 
 
 
-
-### :link: Links
-* Live - <a href='https://project3sell.herokuapp.com/'> Selling  </a>
-* Github - <a href='https://git.generalassemb.ly/ghaidaakhalil/Project-3'> Here </a>
 
 ### :sparkles:Future Features:
 - Add Comment on item
